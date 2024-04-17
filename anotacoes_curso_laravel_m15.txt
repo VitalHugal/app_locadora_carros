@@ -1,0 +1,29 @@
+Oque é uma API?
+
+- Intreface de programação de aplicações;
+- Conjunto de rotinas e padrões estabelcido por um sottware para
+a untilização das suas funcionalidades por aplicativos que não 
+pretendem envolver-se em detalhes da implementação do software,
+mas apenas usar seus serviços.
+- Web service é tipo de API;
+- web service são serviços da internet por meio do protocolo 
+http;
+- Basicamente temos uma aplicação(cliente) request -> web 
+Aplicação(webService) response-> web-> aplicação(cliente);
+- API representa uma interface entre dois sistemas quando estamos
+no contexto web as api são desenvolvidas por meio dos webservices
+que normalmente trabalhando sobre o protocolo HTTP e sua 
+comunicação é feita atraves de uma liguagem universal geralmente
+XML ou JSON;
+_________________________________________________________________
+Entendendo os princípios do REST
+
+- Tranferencia representacional de estado;
+- A principio surgiu apenas para melhorar as falhas que o HTTP
+tinha;
+- O REST não foi pensado para web services ele foi pensando para
+melhorar a semântica do protocolo HTTP;
+_________________________________________________________________
+Iniciando o projeto Locadora de Carros
+
+- 
