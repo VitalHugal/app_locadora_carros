@@ -26,4 +26,62 @@ melhorar a semântica do protocolo HTTP;
 _________________________________________________________________
 Iniciando o projeto Locadora de Carros
 
-- 
+php artisan make:model --migration --controller --resource Marca
+
+- Utilizamos esse comando para criar as migrations os controllers;
+
+php artisan make:model -mcr  Modelo
+
+- Com esse comando criamos tudo denovo porem com abreviação das
+palavras;
+
+php artisan make:model --all Carro 
+
+- Já com esse comnado criamos tudo que os outros dois comando 
+criou acrescido do seeder e do factory;
+
+- Criamos tudo para Cliente e Locacao;
+_________________________________________________________________
+Configurando a conexão com o banco de dados e implementando as 
+migrations
+
+- Baixe o arquivo zip das migrations na pasta banco de dados;
+- Não se esqueça de alterar o Locacaos para Locacoes e trocar 
+tudo que possa estar errado nesse sentindo;
+- Em locacao.php foi adicionado 
+
+protected  $table ='locacoes';
+
+- Além de ter realizado as outras alterações necessárias;
+- Após realizar alterações envie para o banco de dados com o 
+comando;
+
+php artisan migrate;
+_________________________________________________________________
+Entendendo o grupo de rotas Web e API e a importância do 
+Content-Type
+
+- O content-type é responsavel por entregar ao cliente a resposta
+em text/html que é o mais comum geralmente ou em application/json;
+- Dicionando isso;
+
+Route::get('/', function () {
+    return ['chegamos até aqui'=>'sim'];
+});
+
+- E colocando em inspecionar na tela em http://127.0.0.1:8000/api
+em network > api > response > content-type > Você consegue 
+visualizar qual a extensão do arquivo sé json ou html;
+_________________________________________________________________
+Rotas e a diferença entre Route::resource e Route::apiResource
+
+- A difrença entre eles é o mapeamento das rotas de modo 
+automatico do metodo create e edit;
+- Portanto quando trabalharmos com api utilizaremos o apiResource
+
+Route::apiResource('cliente', 'App\Http\Controllers\ClienteController');
+
+- Com isso podemos remover da nosaa class o metodo edit e metodo 
+create;
+- Crie uma rota api resource para cada controlador criado;
+_________________________________________________________________
