@@ -423,3 +423,47 @@ de imagem mas pode ser usado para vídeo, som e etc ...
 body vamos trabalhar com form_data iremos por enquando dizer que
 nosso cliente sabe trabalhar com arquivos json e utilizaremos
 o metodo post (store).
+- Podemos acessar os arquivos texte e file dessa forma;
+
+       //dd($request->nome);
+       //dd($request->get('nome'));
+
+
+       //dd($request->file('imagem'));
+       //dd($request->imagem);
+_________________________________________________________________
+Upload de arquivos - Implementando o upload de imagens parte 2
+
+- Para realizar o upload de um arquivo precisamos passar dois 
+parametros para ele um é o caminho e outro o disco é onde ele vai
+ficar;
+
+	$image = $request -> file('imagem');
+        //$image ->store('path','disco');
+	$image ->store('imagens', 'local');
+
+- Por padrão vem no disco local do nossa aplicação mas se 
+quisermos também podemos definir para ser baixadas na pasta 
+public e etc..
+_________________________________________________________________
+Upload de arquivos - Implementando o upload de imagens parte 3
+
+- Chegou a hora de implementarmos a lógica para recuperamos o 
+nome eo patch de onde está esse arquivo para conseguirmoa acessar;
+- Também vamos tratar o tipo de arquivo recebido;
+- Na model;
+
+'imagem' => 'required|file|mimes:png';
+
+- Adicionamos file e mimes e em seguida podemos adicionar arquivos
+de diversas extensões como xlss, ppt, pdf, jpeg, mp3, mp4;
+
+- No Controller;
+
+ $imagem = $request -> file('imagem');
+       $imagem_urn = $imagem ->store('imagens', 'public');
+
+       $marca =$this->marca->create([
+        'nome' => $request->nome,
+        'imagem' => $imagem_urn
+       ]);

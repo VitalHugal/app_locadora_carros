@@ -38,17 +38,15 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
 
-        $request ->validate($this->marca->rules(),$this->marca->feedback());
-        //foi instanciado o objeto mais e aqui ele esta sendo chamdo para criar um registro com todos os request
-       // $marca = $this->marca->create($request->all());
+       $request ->validate($this->marca->rules(),$this->marca->feedback());
 
-       //acessar os input nome
-       //dd($request->nome);
-       //dd($request->get('nome'));
+       $imagem = $request -> file('imagem');
+       $imagem_urn = $imagem ->store('imagens', 'public');
 
-
-       //dd($request->file('imagem'));
-       dd($request->imagem);
+       $marca =$this->marca->create([
+        'nome' => $request->nome,
+        'imagem' => $imagem_urn
+       ]);
 
         //retorna um json com status code 201
         return response()->json($marca, 201);
