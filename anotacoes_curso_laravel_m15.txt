@@ -509,7 +509,8 @@ Upload de arquivos - Removendo imagens
 - Teremos a remoção da imagem em dois momentos, um momento quando 
 atualizarmos teremos que remover a imagem antiga, e quando for 
 feito o delete;
-- Realizar essa exclusão montamos uma condição para isso;
+- Para realizar essa exclusão montamos uma condição para isso no 
+update;
 
 if ($request->file('imagem')) {
         Storage::disk('public')->delete($marca->imagem);
@@ -517,4 +518,11 @@ if ($request->file('imagem')) {
 
 - Onde vai a requisição de arquivos do tipo imagem vai até public
 e exclui da marca a imagem já existente para a adição da nova;
--
+- Agora no destroy;
+
+  Storage::disk('public')->delete($marca->imagem);
+________________________________________________________________
+API WebService Rest para o Resource Modelo
+
+- Estamos instanciando o metodo rules na model modelo;
+
