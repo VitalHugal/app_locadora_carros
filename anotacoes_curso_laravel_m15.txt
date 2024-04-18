@@ -187,4 +187,92 @@ Removendo registros via DELETE
  
 $marca->delete($marca);
 return ['msg'=>'A marca foi deletado'];
+_________________________________________________________________
+Extra - Entendendo o conceito de endpoint (URL, URN e URI)
 
+- URL -> Host onde esta o recurso
+jorgesantana.com
+google.com
+
+- URN -> Recurso dentro do host
+
+/api/vagas
+/curso/curso-completo-do-desencolvedor-laravel
+
+- URI -> Combinação do protocolo + URL + URN
+https://udemy.com/curso/curso-completo-do-desencolvedor-laravel
+https://jorgesantana.com/api/vagas
+_________________________________________________________________
+Injetando a instância do Model no Controller e como lidar com 
+o Type Hinting
+
+- Estamos basicamento manipulando nossos model atraves de dois 
+jeito um sendo estatico e outro seugestão do tipo 
+- No estatico não estamos intanciando objetos estamos apenas 
+utilizando uma função interna;
+- Já no sugestão de tipo precisamos estanciar o objeto ou muitas
+vezes o laravel já realiza issso para você e você só precisa 
+chama-lo;
+- Tmabém é possivel realizar isso com um outro metodo no caso 
+sendo injeção do model que no caso instaciamos ele no construtor
+do nosso controller;
+
+protected $marca;
+
+    public function __construct(Marca $marca)
+    {
+        $this->marca = $marca;
+    }
+----------------------------------------------
+public function index()
+    {
+        //$marcas = Marca::all();
+        $marca = $this->marca->all();
+        return $marca;
+    }
+-----------------------------------------------
+public function store(Request $request)
+    {
+        //$marca = Marca::create($request->all());
+        $marca = $this->marca->create($request->all());
+        return $marca;
+    }
+-----------------------------------------------
+public function show( $id)
+    {
+        $marca = $this->marca->find($id);
+        return $marca;
+    }
+-----------------------------------------------
+public function update(Request $request, $id)
+    {
+        // print_r($request->all());//os dados atualizados
+        // echo '<hr>';
+        // print_r($marca->getAttributes());//os dados antigos
+
+        $marca = $this->marca->find($id);
+        $marca->update($request->all());
+        return $marca;
+    }
+-----------------------------------------------
+public function destroy($id)
+    {
+       $marca = $this->marca->find($id);
+       $marca->delete();
+       return ['msg'=>'A marca foi deletado'];
+    }
+_________________________________________________________________
+Validações parte 1 - Controle de fluxos
+
+- Vamos focar por enquanto no show, update e destrpy, caso eles 
+não tenham recurso retornar json com mensagem de indiponivel
+
+public function destroy($id)
+    {
+       $marca = $this->marca->find($id);
+       if ($marca === null) {
+        return ['erro'=>'Recurso indisponivel - (Exclusão)'];
+    }
+       $marca->delete();
+       return ['msg'=>'A marca foi removida'];
+    }
