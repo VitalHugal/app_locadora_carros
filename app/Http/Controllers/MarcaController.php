@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MarcaController extends Controller
 {
@@ -77,7 +78,7 @@ class MarcaController extends Controller
     public function update(Request $request, $id)
     {
         $marca = $this->marca->find($id);
-        
+
         if ($marca === null) {
             return response()->json(['erro'=>'Recurso indisponivel - (Atualização)'], 404);
         }
@@ -100,6 +101,12 @@ class MarcaController extends Controller
         $request->validate($marca->rules(), $marca->feedback());
         }
 
+        //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
+        if ($request->file('imagem')) {
+            Storage::disk('public')->delete($marca->imagem);
+        }
+
+
         $imagem = $request -> file('imagem');
         $imagem_urn = $imagem ->store('imagens', 'public');
 
@@ -113,13 +120,20 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-       $marca = $this->marca->find($id);
-       if ($marca === null) {
-        return response()->json(['erro'=>'Recurso indisponivel - (Exclusão)'], 404);
+        $marca = $this->marca->find($id);
+        if ($marca === null) {
+            return response()->json(['erro' => 'Recurso indisponível - (Exclusão)'], 404);
+        }
+
+        // Remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
+        if ($request->file('imagem')) {
+            Storage::disk('public')->delete($marca->imagem);
+        }
+
+        $marca->delete();
+        return response()->json(['msg' => 'A marca foi removida com sucesso'], 200);
     }
-       $marca->delete();
-       return response()->json(['msg'=>'A marca foi removida com sucesso'], 200);
-    }
+
 }

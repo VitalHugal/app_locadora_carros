@@ -25,4 +25,6 @@ class Marca extends Model
         'imagem.mimes'=> 'O arquivo deve ser um aimagem do tipo .png'
         ];
     }
+
+
 }
