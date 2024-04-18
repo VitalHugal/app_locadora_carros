@@ -136,3 +136,27 @@ Selecionando registros via GET
 
 - Vamos manipular agora dois novos end.points para consulta dos 
 registros do tipo marca sendo um geral e um especifico;
+- A rota marca.index é resposavel por todos os registros já a 
+marca.show é responsavel por um registro especifico;
+- No MarcaController;
+
+$marcas = Marca::all();
+return $marcas;
+
+- No POSTMAN adicione a rota da api com o metodo GET;
+
+localhost:8000/api/marca;
+
+- Em seguida teste e veja todos os arquivos que foram solicitados;
+- Para marca.show;
+
+return $marca;
+echo'Chegamos até aqui (show)';
+
+- No POSTMAN adicione a rota com o parametro necessario exemplo
+do id escolhi o id de numero 1
+
+localhost:8000/api/marca/1; 
+
+- Teste e veja, em seguida troque o id;
+_________________________________________________________________
