@@ -364,3 +364,26 @@ $request ->validate($this->marca->rules(),$this->marca->feedback());
 - Estamos validando a requisição onde atraves da model marca 
 estamos chamando o metodo rules e feedback para realizar essa
 validação;
+_________________________________________________________________
+Validações parte 4 - Regras de validação no Update - Lidando 
+com o Unique
+
+- A validação unique lea tem três parametros;
+
+1- tabela;
+2- nome da coluna que será pesquisda na tabela;
+3- id do registro que sera desconsiderado na pesquisa;
+
+'nome' => 'required|unique:marcas,nome,'.$this->id.'|min:3',
+
+- No caso fizemos uma validação no controller de modo em que todo
+update vai precisar acessar o usuario que já existe e realizar 
+uma alteração em algo. Resumindo, essa validação assegura que o 
+campo nome seja obrigatório, único na tabela marcas (com exceção 
+do registro atual durante a atualização) e tenha pelo menos 3 
+caracteres de comprimento;
+_________________________________________________________________
+Validações parte 5 - Regras de validação no Update - Lidando 
+com o PUT/PATCH
+
+- 

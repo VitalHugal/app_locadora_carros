@@ -76,6 +76,26 @@ class MarcaController extends Controller
         if ($marca === null) {
             return response()->json(['erro'=>'Recurso indisponivel - (Atualização)'], 404);
         }
+        if($request->method() === 'PATCH'){
+
+            $regrasDinamicas =array();
+
+            //percorrendo todas as regras definidas no modo
+            foreach($marca->rules() as $input => $regra){
+
+                //coletar apenas as regras aplicasveis aos paramêtros parciais da requisição PATCH
+                if (array_key_exists($input, $request->all())) {
+                    $regrasDinamicas[$input] = $regra;
+                }
+            }
+
+            $request->validate($regrasDinamicas, $marca->feedback());
+        }
+
+        else{
+        $request->validate($marca->rules(), $marca->feedback());
+        }
+
         $marca->update($request->all());
         return response()->json($marca, 200);
     }
