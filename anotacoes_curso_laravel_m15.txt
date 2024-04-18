@@ -338,4 +338,29 @@ Implementando as regras de validação (Rules) no Model
 - A regra que criamos anteriormente funciona porém ela fica muito
 sucetivel a erro, um exemplo disso e caso marca receba um 
 atributo isso já pode gerar um problema para nós futuramente;
-- 
+- Então o ideal é você colocar esse tipo de validação dentro do 
+model marca por uma vez que alterado isso implica em tudo de 
+uma vez;
+- Criamos 2 metodos dentro da model;
+
+public function rules() {
+        return [
+        'nome' => 'required|unique:marcas',
+        'imagem'=> 'required'
+    ];
+
+    }
+    public function feedback(){
+        return [
+        'required'=> 'O campo :attribute é obrigatório.',
+        'nome.unique' => 'O nome da marca já existe.'
+        ];
+    }
+
+- Em seguida no Controller adicionamos;
+
+$request ->validate($this->marca->rules(),$this->marca->feedback());
+
+- Estamos validando a requisição onde atraves da model marca 
+estamos chamando o metodo rules e feedback para realizar essa
+validação;

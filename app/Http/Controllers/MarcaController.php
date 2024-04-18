@@ -39,15 +39,7 @@ class MarcaController extends Controller
     {
         //$marca = Marca::create($request->all());
 
-        //tratar nome e imagem
-        $regras = ['nome' => 'required|unique:marcas',
-        'imagem'=> 'required'
-    ];
-        $feedback = [
-        'required'=> 'O campo :attribute é obrigatório.',
-        'nome.unique' => 'O nome da marca já existe.'
-    ];
-        $request ->validate($regras, $feedback);
+        $request ->validate($this->marca->rules(),$this->marca->feedback());
 
         //foi instanciado o objeto mais e aqui ele esta sendo chamdo para criar um registro com todos os request
         $marca = $this->marca->create($request->all());
