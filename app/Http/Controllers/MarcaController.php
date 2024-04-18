@@ -20,7 +20,7 @@ class MarcaController extends Controller
     {
         //$marcas = Marca::all();
         $marca = $this->marca->all();
-        return $marca;
+        return response()->json($marca, 200);
     }
 
     /**
@@ -38,7 +38,7 @@ class MarcaController extends Controller
     {
         //$marca = Marca::create($request->all());
         $marca = $this->marca->create($request->all());
-        return $marca;
+        return response()->json($marca, 201);
     }
 
     /**
@@ -48,9 +48,9 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->find($id);
         if ($marca === null) {
-            return ['erro'=>'Recurso indisponivel - (ver id)'];
+            return response()->json(['erro'=>'Recurso indisponivel - (ver id)'], 404);//json
         }
-        return $marca;
+        return response()->json($marca, 200);
     }
     /**
      * Show the form for editing the specified resource.
@@ -67,10 +67,10 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->find($id);
         if ($marca === null) {
-            return ['erro'=>'Recurso indisponivel - (Atualização)'];
+            return response()->json(['erro'=>'Recurso indisponivel - (Atualização)'], 404);
         }
         $marca->update($request->all());
-        return $marca;
+        return response()->json($marca, 200);
     }
 
     /**
@@ -80,9 +80,9 @@ class MarcaController extends Controller
     {
        $marca = $this->marca->find($id);
        if ($marca === null) {
-        return ['erro'=>'Recurso indisponivel - (Exclusão)'];
+        return response()->json(['erro'=>'Recurso indisponivel - (Exclusão)'], 404);
     }
        $marca->delete();
-       return ['msg'=>'A marca foi removida'];
+       return response()->json(['msg'=>'A marca foi removida com sucesso'], 200);
     }
 }
