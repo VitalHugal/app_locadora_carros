@@ -467,3 +467,30 @@ de diversas extensões como xlss, ppt, pdf, jpeg, mp3, mp4;
         'nome' => $request->nome,
         'imagem' => $imagem_urn
        ]);
+_________________________________________________________________
+Upload de arquivos - Criando um link simbólico para o disco 
+public
+
+- Iremos criar um link simbolico para /public pois ele é o unico
+diretorio publico dentro do laravel;
+
+php artisan storage:link 
+ou 
+php artisan storage:link --force
+
+- Em seu terminal coloque esse comando e ele será responsável 
+por gerar um link desse tipo que precisamos;
+- Lembre-se esse diretorio trabalha em conjunto com storage/app
+/public/imagens caso vc exclua algo em um no outro também 
+ocorrerá e isso é para tudo;
+- Com isso craido eu consigo acessar essas imagens atraves de 
+uma requisição get por exemplo;
+- Coloque ele link no seu POSTMAN com o metodo get, lembre-se 
+colocar o direcionamento de uma imagem válida do seu sistema;
+
+localhost:8000/storage/imagens/6w1e44KVT0CwuPBB6cBGsZbQSW7y
+QRKTr0qifEQ5.png
+_________________________________________________________________
+Upload de arquivos - Atualizando imagens
+
+-
