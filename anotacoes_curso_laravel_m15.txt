@@ -160,3 +160,24 @@ localhost:8000/api/marca/1;
 
 - Teste e veja, em seguida troque o id;
 _________________________________________________________________
+Atualizando registros via PUT e PATCH
+
+- Vamos implementra um novo end.point na nossa api webservice 
+que sera possivel atualizar um registro do tipo marca;
+- Para ser possivel esse update é necessario no postman passar o
+identificador unico, também passar o verbo http no caso PUT por
+enquanto;
+
+print_r($request->all());//os dados atualizados
+echo '<hr>';
+print_r($marca->getAttributes());//os dados antigos
+$marca->update($request->all());
+return $marca;
+
+- Agora o PATCH em relação ao PUT não tem nenhuma diferença pois
+os dois são utilizados para a mesma finalizada porém 
+semanticamente é esperado que patch faz parte de pequenas 
+atualizações não atualizações completas;
+- Pegamos nosso exemplo seria ideal que utiliza-se apenas para 
+alterar o nome, não todos os dados;
+_________________________________________________________________
