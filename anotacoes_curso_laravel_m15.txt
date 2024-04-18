@@ -181,3 +181,10 @@ atualizações não atualizações completas;
 - Pegamos nosso exemplo seria ideal que utiliza-se apenas para 
 alterar o nome, não todos os dados;
 _________________________________________________________________
+Removendo registros via DELETE
+
+- Também é necessario que você passe o parametro na url;
+ 
+$marca->delete($marca);
+return ['msg'=>'A marca foi deletado'];
+
