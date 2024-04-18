@@ -493,4 +493,13 @@ QRKTr0qifEQ5.png
 _________________________________________________________________
 Upload de arquivos - Atualizando imagens
 
--
+- Para ser possível atualizar o arquivo com imagem temos que 
+utilizar um _metodo com pararmetro put ou patch no nosso POSTMAN
+dessa forma; 
+
+_method na key
+put no value
+
+- Assim como nome e bmw;
+- Isso é um alimitação do framework laravel por isso temos que 
+fazer isso;

@@ -77,6 +77,7 @@ class MarcaController extends Controller
     public function update(Request $request, $id)
     {
         $marca = $this->marca->find($id);
+        
         if ($marca === null) {
             return response()->json(['erro'=>'Recurso indisponivel - (Atualização)'], 404);
         }
@@ -94,13 +95,18 @@ class MarcaController extends Controller
             }
 
             $request->validate($regrasDinamicas, $marca->feedback());
-        }
 
-        else{
+        }else{
         $request->validate($marca->rules(), $marca->feedback());
         }
 
-        $marca->update($request->all());
+        $imagem = $request -> file('imagem');
+        $imagem_urn = $imagem ->store('imagens', 'public');
+
+        $marca->update([
+            'nome' => $request->nome,
+            'imagem'=> $imagem_urn
+        ]);
         return response()->json($marca, 200);
     }
 
