@@ -120,20 +120,17 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $marca = $this->marca->find($id);
-        if ($marca === null) {
-            return response()->json(['erro' => 'Recurso indisponível - (Exclusão)'], 404);
-        }
-
-        // Remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
-        if ($request->file('imagem')) {
-            Storage::disk('public')->delete($marca->imagem);
-        }
-
-        $marca->delete();
-        return response()->json(['msg' => 'A marca foi removida com sucesso'], 200);
+       $marca = $this->marca->find($id);
+       if ($marca === null) {
+        return response()->json(['erro'=>'Recurso indisponivel - (Exclusão)'], 404);
     }
+    //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
 
+        Storage::disk('public')->delete($marca->imagem);
+    
+       $marca->delete();
+       return response()->json(['msg'=>'A marca foi removida com sucesso'], 200);
+    }
 }
