@@ -19,6 +19,7 @@ class MarcaController extends Controller
     public function index()
     {
         //$marcas = Marca::all();
+
         $marca = $this->marca->all();
         return response()->json($marca, 200);
     }
@@ -37,7 +38,21 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
         //$marca = Marca::create($request->all());
+
+        //tratar nome e imagem
+        $regras = ['nome' => 'required|unique:marcas',
+        'imagem'=> 'required'
+    ];
+        $feedback = [
+        'required'=> 'O campo :attribute é obrigatório.',
+        'nome.unique' => 'O nome da marca já existe.'
+    ];
+        $request ->validate($regras, $feedback);
+
+        //foi instanciado o objeto mais e aqui ele esta sendo chamdo para criar um registro com todos os request
         $marca = $this->marca->create($request->all());
+
+        //retorna um json com status code 201
         return response()->json($marca, 201);
     }
 

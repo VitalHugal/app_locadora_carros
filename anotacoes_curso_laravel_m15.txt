@@ -302,7 +302,40 @@ resposta da requisição;
 return response()->json(['erro'=>'Recurso indisponivel - 
 (ver id)'], 404);
 
-- no caso do store também adicionamos 
+- No caso do store também adicionamos ;
 
 $marca = $this->marca->create($request->all());
 return response()->json($marca, 201);
+
+- Teste no seu POSTMAN essas validações que fizemos e veja como
+é importante cada validação;
+_________________________________________________________________
+Validações parte 3 - Validando parâmetros e a importância do 
+Accept
+
+- Iremos tratar o metodo store de como em que caso o parametro 
+não seja válido retorna um json com as mensagens de feedback(s);
+
+
+//tratar nome e imagem
+ $regras = ['nome' => 'required|unique:marcas',
+        'imagem'=> 'required'
+    ];
+ $feedback = [
+        'required'=> 'O campo :attribute é obrigatório.',
+        'nome.unique' => 'O nome da marca já existe.'
+    ];
+  $request ->validate($regras, $feedback);
+
+
+- Para essa validação acontecer e não encaminhar o cliente de 
+volta uma página inicial como o validade trabalha o ideal é vc no 
+header do postman colocar o Accept pois vc esta dizendo que esse 
+cliente consegue trabalhar com arquivos json;
+_________________________________________________________________
+Implementando as regras de validação (Rules) no Model
+
+- A regra que criamos anteriormente funciona porém ela fica muito
+sucetivel a erro, um exemplo disso e caso marca receba um 
+atributo isso já pode gerar um problema para nós futuramente;
+- 
