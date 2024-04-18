@@ -85,3 +85,54 @@ Route::apiResource('cliente', 'App\Http\Controllers\ClienteController');
 create;
 - Crie uma rota api resource para cada controlador criado;
 _________________________________________________________________
+Extra (fix da aula anterior) - Atributo $namespace de 
+RouteServiceProvide
+
+- Ensinando como ajustar o comportamento de não precisar passar a
+rota inteira do Controller;
+- No laravel 8 vc tem que ir no diretorio Providers > 
+RouteServiceProvider.php e descomantar a linha que fala sobre o
+controller;
+- Mas é indicado para vc que esta iniciando coloque o namespace
+completo como haviamos feito;
+_________________________________________________________________
+Criando registros via POST
+
+- php artisan route:list
+
+- Com esse comando consigo tem acesso a todas routas que foram 
+criadas e atraves disso vamos trabalhar com a rota api/marca cujo
+o metodo seja posto que chama marca.store;
+- Em marcaController adicione uma linha de comanda de return para
+ser visual apenas como um teste;
+- Em seguida abra o software POSTMAN que te auxiliará na 
+manipulação da api;
+- Crie um novo buscador de api - adicione o metodo post - em 
+seguida direcione qual é a rota que ela deve pesquisar;
+
+localhost:8000/api/marca;
+
+- E clique em Send para verificar se ela esta tendo retorno;
+- No POSTMAN vai até body e nele por enquando deixe o 
+form-urlencoded;
+- Acresente nome e imagem e qualquer valor voltado para teste 
+apricncipio adicionei nome-> toyota e imagem -> imagem_toyota.png;
+- Em seguida no Controller foi adicionado um dd($request); e no
+POSTMAN clicamos em send e em seguida em preview para visualizar
+se realmente estavamos tendo uma comunicação e resposta;
+- No controller coloque;
+
+Marca::create($request->all());
+
+- Para ser possivel a inserção no banco de dados, porém temos que
+na Model Marca e colocar o $fillable passando os paramentros que
+vão ser aceitos;
+
+protected $fillable = ['nome','imagem'];
+
+- Em seguida clique em send e veja seu banco de dados;
+_________________________________________________________________
+Selecionando registros via GET
+
+- Vamos manipular agora dois novos end.points para consulta dos 
+registros do tipo marca sendo um geral e um especifico;
