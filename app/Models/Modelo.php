@@ -19,7 +19,7 @@ class Modelo extends Model
             'numero_portas'=> 'required|integer|digits_between:1,5',//1 a 5
             'lugares'=> 'required|integer|digits_between:1,20',//1 a 20
             'air_bag'=>'required|boolean',
-            'abs'=>'required|boolean'
+            'abs'=>'required|boolean' // true, flase, 1, 0, '1', '0'
         ];
     }
 }
