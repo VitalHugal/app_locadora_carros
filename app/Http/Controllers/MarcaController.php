@@ -60,7 +60,6 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->with('modelos')->find($id);
 
-        $marca = $this->marca->find($id);
         if ($marca === null) {
             return response()->json(['erro'=>'Recurso indisponivel - (ver id)'], 404);//json
         }

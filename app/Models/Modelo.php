@@ -25,8 +25,8 @@ class Modelo extends Model
 
     //Relacionamento com a model marca onde um modelo tem uma marca de carro
     public function marca(){
-        //Um modelo pertence a uma marca
 
+        //Um modelo pertence a uma marca
         return $this->belongsTo('App\Models\Marca');
     }
 }
