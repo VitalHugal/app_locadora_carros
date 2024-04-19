@@ -558,3 +558,28 @@ a cima também em protected $fillable a palavra imagens;
 - Testamos com sucesso a aplicação dos metodos na pratica e com
 isso foi constado que apenas o metodo PATCH precisa ser revisto
 uma vez que não esta de acordo com o ModeloController mais;
+_________________________________________________________________
+Adicionando o relacionamento entre modelos e marcas
+
+- Para adicionar o relacionamneto é bem simples criamos dois 
+metodos um em cada model sendo ela marca e modelo instaciando 
+nelas que uma marca tem diversos modelo e um modelo tem uma marca;
+- Em modelocontroller foi adicionado uma expressão de 
+relacionamento da controler modelo para com marca no metodo 
+store da seguinte forma;
+
+$modelo = $this->modelo->with('marca')->find($id);
+
+- Sendo a expressão with('marca');
+- No metodo index também adicionamos um with() pois quando 
+pesquisarmos por modelo iremos ter o retorno também da marca;
+
+return response()->json( $this->modelo->with('marca')->get(), 200);
+
+- Também foi preciso alterar o metodo que antes era all() e agora
+passou a ser get() pois com o all() poderia gerar alguns erros no
+nosso código por conta do funcionamento do all();
+_________________________________________________________________
+Refactoring do endpoint update de marca e modelo
+
+- 

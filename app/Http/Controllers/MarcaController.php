@@ -21,7 +21,7 @@ class MarcaController extends Controller
     {
         //$marcas = Marca::all();
 
-        $marca = $this->marca->all();
+        $marca = $this->marca->with('modelos')->get();
         return response()->json($marca, 200);
     }
 

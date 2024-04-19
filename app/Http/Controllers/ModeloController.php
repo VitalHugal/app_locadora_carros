@@ -20,7 +20,9 @@ class ModeloController extends Controller
     public function index()
     {
 
-        return response()->json( $this->modelo->all(), 200);
+        return response()->json( $this->modelo->with('marca')->get(), 200);
+        //all() -> craindo um obj de consulta +get() =collection
+        //get() -> modedificar a consulta -> colletion
     }
 
     /**
