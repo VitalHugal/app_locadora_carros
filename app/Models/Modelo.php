@@ -29,4 +29,5 @@ class Modelo extends Model
         //Um modelo pertence a uma marca
         return $this->belongsTo('App\Models\Marca');
     }
+
 }

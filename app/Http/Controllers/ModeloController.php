@@ -18,21 +18,22 @@ class ModeloController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        $modelos= array();
+{
+    $modelos = array();
 
-        if($request->has('atributos')){
-            $atributos= $request->atributos;
-            $modelos = $this->modelo->selectRaw($atributos)->with('marca')->get();
-
-        }else{
-            $modelos = $this->modelo->with('marca')->get();
-        }
-        return response()->json($modelos, 200);
-
-        //all() -> craindo um obj de consulta +get() =collection
-        //get() -> modedificar a consulta -> colletion
+    if ($request->has('atributos') && $request->has('atributos_marca')) {
+        $atributos = explode(',', $request->atributos);
+        $atributos_marca = explode(',', $request->atributos_marca);
+        $modelos = $this->modelo->select($atributos)->with(['marca' => function ($query) use ($atributos_marca) {
+            $query->select($atributos_marca);
+        }])->get();
+    } else {
+        $modelos = $this->modelo->with('marca')->get();
     }
+
+    return response()->json($modelos, 200);
+}
+
 
     /**
      * Show the form for creating a new resource.

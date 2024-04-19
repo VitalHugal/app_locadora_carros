@@ -612,4 +612,8 @@ public function index(Request $request)
         //all() -> craindo um obj de consulta +get() =collection
         //get() -> modedificar a consulta -> colletion
     }
+_________________________________________________________________
+Filtros - Obtendo colunas específicas com a instrução with()
 
+- Agora vai ser criado um jeito de buscarmos algum parametro do 
+objeto que esta relacionado com o with();
