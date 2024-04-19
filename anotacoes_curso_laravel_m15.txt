@@ -654,3 +654,17 @@ $modelos = $modelos->where($filtro[0],$filtro[1],$filtro[2]);
 
         }
 _________________________________________________________________
+Filtros - Aplicando condições nas pesquisas parte 2
+
+- Aplicamos uma condição de pesquisa onde o cliente consegue 
+pesquisar por diversos parametros;
+
+if ($request->has('filtro')) {
+
+$filtro = explode(';', $request->filtro);
+foreach ($filtro as $key => $condicao) {
+$c = explode(':', $condicao);
+$modelos = $modelos->where($c[0], $c[1], $c[2]);
+            }
+        }
+_________________________________________________________________

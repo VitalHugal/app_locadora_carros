@@ -10,7 +10,8 @@ class ModeloController extends Controller
 {
     protected $modelo;
 
-    public function __construct(Modelo $modelo) {
+    public function __construct(Modelo $modelo)
+    {
         $this->modelo = $modelo;
     }
 
@@ -23,19 +24,22 @@ class ModeloController extends Controller
     {
         $modelos = array();
 
-        if($request->has('atributos_marca')) {
+        if ($request->has('atributos_marca')) {
             $atributos_marca = $request->atributos_marca;
-            $modelos = $this->modelo->with('marca:id,'.$atributos_marca);
+            $modelos = $this->modelo->with('marca:id,' . $atributos_marca);
         } else {
             $modelos = $this->modelo->with('marca');
         }
-        if ($request ->has('filtro')) {
-            $filtro = explode(':',$request->filtro);
-            $modelos = $modelos->where($filtro[0],$filtro[1],$filtro[2]);
+        if ($request->has('filtro')) {
 
+            $filtro = explode(';', $request->filtro);
+            foreach ($filtro as $key => $condicao) {
+                $c = explode(':', $condicao);
+                $modelos = $modelos->where($c[0], $c[1], $c[2]);
+            }
         }
 
-        if($request->has('atributos')) {
+        if ($request->has('atributos')) {
             $atributos = $request->atributos;
             $modelos = $modelos->selectRaw($atributos)->get();
         } else {
@@ -94,8 +98,8 @@ class ModeloController extends Controller
     public function show($id)
     {
         $modelo = $this->modelo->with('marca')->find($id);
-        if($modelo === null) {
-            return response()->json(['erro' => 'Recurso pesquisado não existe'], 404) ;
+        if ($modelo === null) {
+            return response()->json(['erro' => 'Recurso pesquisado não existe'], 404);
         }
 
         return response()->json($modelo, 200);
@@ -123,31 +127,30 @@ class ModeloController extends Controller
     {
         $modelo = $this->modelo->find($id);
 
-        if($modelo === null) {
+        if ($modelo === null) {
             return response()->json(['erro' => 'Impossível realizar a atualização. O recurso solicitado não existe'], 404);
         }
 
-        if($request->method() === 'PATCH') {
+        if ($request->method() === 'PATCH') {
 
             $regrasDinamicas = array();
 
             //percorrendo todas as regras definidas no Model
-            foreach($modelo->rules() as $input => $regra) {
+            foreach ($modelo->rules() as $input => $regra) {
 
                 //coletar apenas as regras aplicáveis aos parâmetros parciais da requisição PATCH
-                if(array_key_exists($input, $request->all())) {
+                if (array_key_exists($input, $request->all())) {
                     $regrasDinamicas[$input] = $regra;
                 }
             }
 
             $request->validate($regrasDinamicas);
-
         } else {
             $request->validate($modelo->rules());
         }
 
         //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
-        if($request->file('imagem')) {
+        if ($request->file('imagem')) {
             Storage::disk('public')->delete($modelo->imagem);
         }
 
@@ -181,7 +184,7 @@ class ModeloController extends Controller
     {
         $modelo = $this->modelo->find($id);
 
-        if($modelo === null) {
+        if ($modelo === null) {
             return response()->json(['erro' => 'Impossível realizar a exclusão. O recurso solicitado não existe'], 404);
         }
 
@@ -190,6 +193,5 @@ class ModeloController extends Controller
 
         $modelo->delete();
         return response()->json(['msg' => 'O modelo foi removida com sucesso!'], 200);
-
     }
 }
