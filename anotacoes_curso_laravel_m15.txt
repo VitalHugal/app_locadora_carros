@@ -617,3 +617,40 @@ Filtros - Obtendo colunas específicas com a instrução with()
 
 - Agora vai ser criado um jeito de buscarmos algum parametro do 
 objeto que esta relacionado com o with();
+
+ public function index(Request $request)
+    {
+        $modelos = array();
+
+        if($request->has('atributos_marca')) {
+            $atributos_marca = $request->atributos_marca;
+            $modelos = $this->modelo->with('marca:id,'.$atributos_marca);
+        } else {
+            $modelos = $this->modelo->with('marca');
+        }
+
+        if($request->has('atributos')) {
+            $atributos = $request->atributos;
+            $modelos = $modelos->selectRaw($atributos)->get();
+        } else {
+            $modelos = $modelos->get();
+        }
+
+        //$this->modelo->with('marca')->get()
+        return response()->json($modelos, 200);
+        //all() -> criando um obj de consulta + get() = collection
+        //get() -> modificar a consulta -> collection
+    }
+
+_________________________________________________________________
+Filtros - Aplicando condições nas pesquisas parte 1
+
+- Vamos implementar uma lógica que vai permitir ao cliente ter 
+uma opção de pesquisa;
+
+if ($request ->has('filtro')) {
+$filtro = explode(':',$request->filtro);
+$modelos = $modelos->where($filtro[0],$filtro[1],$filtro[2]);
+
+        }
+_________________________________________________________________
