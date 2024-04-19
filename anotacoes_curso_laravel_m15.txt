@@ -668,3 +668,6 @@ $modelos = $modelos->where($c[0], $c[1], $c[2]);
             }
         }
 _________________________________________________________________
+Filtros - Aplicando os filtros ao resource Marca
+
+- 
