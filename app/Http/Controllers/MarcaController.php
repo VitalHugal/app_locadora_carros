@@ -58,6 +58,8 @@ class MarcaController extends Controller
      */
     public function show( $id)
     {
+        $marca = $this->marca->with('modelos')->find($id);
+
         $marca = $this->marca->find($id);
         if ($marca === null) {
             return response()->json(['erro'=>'Recurso indisponivel - (ver id)'], 404);//json
@@ -129,7 +131,7 @@ class MarcaController extends Controller
     //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
 
         Storage::disk('public')->delete($marca->imagem);
-    
+
        $marca->delete();
        return response()->json(['msg'=>'A marca foi removida com sucesso'], 200);
     }
