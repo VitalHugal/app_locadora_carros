@@ -17,12 +17,36 @@ class MarcaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$marcas = Marca::all();
+        $marcas = array();
 
-        $marca = $this->marca->with('modelos')->get();
-        return response()->json($marca, 200);
+        if ($request->has('atributos_modelos')) {
+            $atributos_modelos = $request->atributos_modelos;
+            $marcas = $this->marca->with('modelos:id,' . $atributos_modelos);
+        } else {
+            $marcas = $this->marca->with('modelos');
+        }
+
+        if ($request->has('filtro')) {
+
+            $filtro = explode(';', $request->filtro);
+            foreach ($filtro as $key => $condicao) {
+                $c = explode(':', $condicao);
+                $marcas = $marcas->where($c[0], $c[1], $c[2]);
+            }
+        }
+        if ($request->has('atributos')) {
+            $atributos = $request->atributos;
+            $marcas = $marcas->selectRaw($atributos)->get();
+        } else {
+            $marcas = $marcas->get();
+        }
+
+
+
+        //$marca = $this->marca->with('modelos')->get();
+        return response()->json($marcas, 200);
     }
 
     /**
@@ -39,15 +63,15 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
 
-       $request ->validate($this->marca->rules(),$this->marca->feedback());
+        $request->validate($this->marca->rules(), $this->marca->feedback());
 
-       $imagem = $request -> file('imagem');
-       $imagem_urn = $imagem ->store('imagens', 'public');
+        $imagem = $request->file('imagem');
+        $imagem_urn = $imagem->store('imagens', 'public');
 
-       $marca =$this->marca->create([
-        'nome' => $request->nome,
-        'imagem' => $imagem_urn
-       ]);
+        $marca = $this->marca->create([
+            'nome' => $request->nome,
+            'imagem' => $imagem_urn
+        ]);
 
         //retorna um json com status code 201
         return response()->json($marca, 201);
@@ -56,12 +80,12 @@ class MarcaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($id)
     {
         $marca = $this->marca->with('modelos')->find($id);
 
         if ($marca === null) {
-            return response()->json(['erro'=>'Recurso indisponivel - (ver id)'], 404);//json
+            return response()->json(['erro' => 'Recurso indisponivel - (ver id)'], 404); //json
         }
         return response()->json($marca, 200);
     }
@@ -81,14 +105,14 @@ class MarcaController extends Controller
         $marca = $this->marca->find($id);
 
         if ($marca === null) {
-            return response()->json(['erro'=>'Recurso indisponivel - (Atualização)'], 404);
+            return response()->json(['erro' => 'Recurso indisponivel - (Atualização)'], 404);
         }
-        if($request->method() === 'PATCH'){
+        if ($request->method() === 'PATCH') {
 
-            $regrasDinamicas =array();
+            $regrasDinamicas = array();
 
             //percorrendo todas as regras definidas no modo
-            foreach($marca->rules() as $input => $regra){
+            foreach ($marca->rules() as $input => $regra) {
 
                 //coletar apenas as regras aplicasveis aos paramêtros parciais da requisição PATCH
                 if (array_key_exists($input, $request->all())) {
@@ -97,9 +121,8 @@ class MarcaController extends Controller
             }
 
             $request->validate($regrasDinamicas, $marca->feedback());
-
-        }else{
-        $request->validate($marca->rules(), $marca->feedback());
+        } else {
+            $request->validate($marca->rules(), $marca->feedback());
         }
 
         //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
@@ -108,8 +131,8 @@ class MarcaController extends Controller
         }
 
 
-        $imagem = $request -> file('imagem');
-        $imagem_urn = $imagem ->store('imagens', 'public');
+        $imagem = $request->file('imagem');
+        $imagem_urn = $imagem->store('imagens', 'public');
 
         //preencher o objeto $marca com os dados request
 
@@ -128,15 +151,15 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-       $marca = $this->marca->find($id);
-       if ($marca === null) {
-        return response()->json(['erro'=>'Recurso indisponivel - (Exclusão)'], 404);
-    }
-    //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
+        $marca = $this->marca->find($id);
+        if ($marca === null) {
+            return response()->json(['erro' => 'Recurso indisponivel - (Exclusão)'], 404);
+        }
+        //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
 
         Storage::disk('public')->delete($marca->imagem);
 
-       $marca->delete();
-       return response()->json(['msg'=>'A marca foi removida com sucesso'], 200);
+        $marca->delete();
+        return response()->json(['msg' => 'A marca foi removida com sucesso'], 200);
     }
 }

@@ -46,7 +46,7 @@ class ModeloController extends Controller
             $modelos = $modelos->get();
         }
 
-        //$this->modelo->with('marca')->get()
+
         return response()->json($modelos, 200);
         //all() -> criando um obj de consulta + get() = collection
         //get() -> modificar a consulta -> collection
