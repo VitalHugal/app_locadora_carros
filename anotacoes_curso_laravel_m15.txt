@@ -582,4 +582,34 @@ nosso código por conta do funcionamento do all();
 _________________________________________________________________
 Refactoring do endpoint update de marca e modelo
 
-- 
+- Criamos um novo jeito de atualização com patch pois desse modo
+conseguimos atualizar de forma que não modefique algo já 
+existente;
+
+$marca->fill($request->all());
+$marca->imagem = $imagem_urn;
+$marca->save();
+_________________________________________________________________
+Filtros - Selecionando os atributos de retorno
+
+- Vamos desenvolver algo voltado para uma pesquisa onde você pode
+selecionar qual atributo vc quer buscar dos registros que temos;
+- Com isso nosso index foi modificado e ficou assim;
+
+public function index(Request $request)
+    {
+        $modelos= array();
+
+        if($request->has('atributos')){
+            $atributos= $request->atributos;
+            $modelos = $this->modelo->selectRaw($atributos)->with('marca')->get();
+
+        }else{
+            $modelos = $this->modelo->with('marca')->get();
+        }
+        return response()->json($modelos, 200);
+
+        //all() -> craindo um obj de consulta +get() =collection
+        //get() -> modedificar a consulta -> colletion
+    }
+

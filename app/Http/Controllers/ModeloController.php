@@ -17,10 +17,19 @@ class ModeloController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $modelos= array();
 
-        return response()->json( $this->modelo->with('marca')->get(), 200);
+        if($request->has('atributos')){
+            $atributos= $request->atributos;
+            $modelos = $this->modelo->selectRaw($atributos)->with('marca')->get();
+
+        }else{
+            $modelos = $this->modelo->with('marca')->get();
+        }
+        return response()->json($modelos, 200);
+
         //all() -> craindo um obj de consulta +get() =collection
         //get() -> modedificar a consulta -> colletion
     }
@@ -130,7 +139,7 @@ class ModeloController extends Controller
         //     'abs'=> $request->abs
 
         //    ]);
-        
+
         return response()->json($modelo, 200);
     }
 
