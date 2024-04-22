@@ -704,3 +704,13 @@ Modelo
 marcaRepository e com isso realizamos apenas as modificações que 
 eram necessario para funcionar no POSTMAN;
 __________________________________________________________________
+Repository Design Pattern - Implementando um Abstract Repository
+
+- Nessa etapa iremos criar uma nova class onde iremos armazenar 
+todo tipo de código comum desses dois repositorio criados 
+anteriormente;
+- Coloque toda informação contida nessas duas classes em abstract
+pois iremos centralizar nela tudo que seja comum em outras classes;
+e nas proprias classe deixaremos apenas oque é especifico de cada
+uma; 
+__________________________________________________________________
