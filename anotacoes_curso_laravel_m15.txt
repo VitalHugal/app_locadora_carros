@@ -795,5 +795,5 @@ $user->email = 'jorge@teste.com'
 
 $user->password = bcrypt('1234')
 
- $user->save()
+$user->save()
 __________________________________________________________________
