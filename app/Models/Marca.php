@@ -28,9 +28,10 @@ class Marca extends Model
 
     //Relacionamento com a model modelo onde uma marca tem muitos modelos de carro
     public function modelos(){
-        //Uma marca possui diversos modelos
 
+        //Uma marca possui diversos modelos
         return $this->hasMany('App\Models\Modelo');
     }
+
 
 }
