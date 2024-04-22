@@ -738,3 +738,37 @@ alvança dentro da nossa API;
 - Criamos LocacoesRepository, Codificamos a model Locacoes e 
 também LocacoesController;
 __________________________________________________________________
+Introdução ao JWT (Json Web Token)
+
+- Autenticação por usuario e senha e autorização por meiode tokem
+em API WebService Rest;
+- Basicamente o cliente faz uma requisição para logar e com isso 
+essa requisição parte para API onde ela realiza a autenticação e 
+gera um token de autorização onde é armazendo no BD em seguida
+retorna o token de autorização para o cliente;
+- O JWT é contituido por três partes pelo header/polyload/
+signature;
+- Na pratica o token é a autorização e precisa estar presente em 
+todas requisições feitar pelo cleinte;
+__________________________________________________________________
+Instalando o pacote JWT-Auth
+ 
+- No seu terminal, na pasta do projeto coloque esse comando
+
+composer require tymon/jwt-auth
+__________________________________________________________________
+Configurando o JWT-Auth no projeto
+
+- Esse link vai ser capaz de te ajudar com a configuração
+
+https://medium.com/@demian.kostelny/install-jwt-in-laravel-app-2023-guide-for-beginners-94f7245ce6bd
+
+__________________________________________________________________
+Implementando a interface JWTSubject no model User e o Auth Guard
+API Driver JWT
+
+- Em quick star será possivel te ajudar;
+
+https://medium.com/@demian.kostelny/install-jwt-in-laravel-app-2023-guide-for-beginners-94f7245ce6bd
+__________________________________________________________________
+
