@@ -771,4 +771,29 @@ API Driver JWT
 
 https://medium.com/@demian.kostelny/install-jwt-in-laravel-app-2023-guide-for-beginners-94f7245ce6bd
 __________________________________________________________________
+Criando as rotas de autenticação e autorização e o AuthController
 
+- Criaremos algumas rota e também um controller para conseguirmos 
+dar andamento nesse tema;
+
+php artisan make:controller AuthController 
+
+- Implemente no Authcontroller return mais o nome do metodo para
+ teste no postman;
+__________________________________________________________________
+Inserindo um usuário no banco de dados
+
+- Traves do tinker inserimos um usuario no banco de dados;
+
+php artisan tinker;
+
+$user =  new App\Models\User();
+
+$user->name ="Jorge"
+
+$user->email = 'jorge@teste.com'
+
+$user->password = bcrypt('1234')
+
+ $user->save()
+__________________________________________________________________
