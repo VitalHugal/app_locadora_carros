@@ -670,4 +670,28 @@ $modelos = $modelos->where($c[0], $c[1], $c[2]);
 _________________________________________________________________
 Filtros - Aplicando os filtros ao resource Marca
 
-- 
+- Aplicarmos os parametros que realizamos de filtro de modelo 
+para marcas onde funcionou perfeitamente;
+- Não esqueça de colocar o pametro Request $request no index;
+_________________________________________________________________
+Repository Design Pattern - Introdução
+
+- É uma solução geral para um problema que ocorre com frequencia 
+dentro de um contexto;
+- Surgindo as boas práticas;
+- Se olharmos para o contexto da programação orientada a objetos 
+estamos ferindo-a pois em alguns contextos estamos relizando a 
+aplicação código semelhantes;
+- Oque iremos realizar por agora é ao invés do controller 
+manipular um model ele manipule um repositorio eo repositorio 
+uma model;
+_________________________________________________________________
+Repository Design Pattern - Implementando um Repository para 
+Marca
+
+- Vamos criar um repositorio para marca;
+- Em app crei um pasta Repositories > e um arquivo 
+MarcaRepository.php;
+- Nesse repositorio instaciamos diversas funções para conseguirmos
+desfrutar doque é desing pattern e com isso evitar a repetição de
+códigos;
