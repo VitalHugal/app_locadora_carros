@@ -695,3 +695,12 @@ MarcaRepository.php;
 - Nesse repositorio instaciamos diversas funções para conseguirmos
 desfrutar doque é desing pattern e com isso evitar a repetição de
 códigos;
+__________________________________________________________________
+Repository Design Pattern - Implementando um Repository para 
+Modelo
+
+- Impletaremos nessa etapa o repositorio para modelo;
+- Basicamente ele é um ctrl+c ctrl+v de tudo que fizemos no 
+marcaRepository e com isso realizamos apenas as modificações que 
+eram necessario para funcionar no POSTMAN;
+__________________________________________________________________

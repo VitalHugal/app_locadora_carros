@@ -35,7 +35,6 @@ class MarcaController extends Controller
 
         }
         if ($request->has('atributos')) {
-            $atributos = $request->atributos;
             $marcaRepository-> selectAtributos($request ->atributos);
         }
         return response()->json($marcaRepository->getResultado(), 200);
