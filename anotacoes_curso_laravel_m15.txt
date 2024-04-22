@@ -714,3 +714,14 @@ pois iremos centralizar nela tudo que seja comum em outras classes;
 e nas proprias classe deixaremos apenas oque é especifico de cada
 uma; 
 __________________________________________________________________
+API WebService Rest para o Resource Carro
+
+- Nessa etapa iremos basicamente realizar ctrl+c ctrl+v para o 
+carrocontroller de modo em que seja possível termos como alvança 
+dentro da nossa API;
+- Criamos CarroRepository, Codificamos a model Carro e também
+CarroController;
+__________________________________________________________________
+API WebService Rest para o Resource Cliente
+
+- 
