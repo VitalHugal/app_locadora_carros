@@ -901,3 +901,12 @@ Anatomia do JWT (Json Web Token)
 cores;
 - header/payload/verify-signature;
 - Para ele se tornar valído ele precisa da senha que esta no .env;
+__________________________________________________________________
+Expirando o JWT por tempo limite
+
+- Gere o token e coloque em jwt.io 
+- Temos dois campos dentro do payload o IAT ->data de geração do 
+token e EXP ->data de encimento do token;
+- Em config>jwt.php> procure por 'ttl';
+- Lá esta a instrução do sobre tempo;
+- Troque pelo valor em que o tempo seja de sua preferencia;
