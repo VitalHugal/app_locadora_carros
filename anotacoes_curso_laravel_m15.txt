@@ -892,3 +892,12 @@ POST - localhost:8000/api/v1/logout
 accept -> application/json
 authorization ->Bearer <token>;
 __________________________________________________________________
+Anatomia do JWT (Json Web Token)
+
+- Agora vamos aprender um pouco sobre a anatomia do jwt
+- Ele é dividido em trÊs partes e é isso que vamos ver nesse site;
+- Em jwt.io coloque um token de sua preferencia;
+- Descesndo até DEBUG coloque seu token e repare que ele tem tres
+cores;
+- header/payload/verify-signature;
+- Para ele se tornar valído ele precisa da senha que esta no .env;
