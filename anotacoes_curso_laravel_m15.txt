@@ -832,4 +832,25 @@ possível realizar um versionamento atraves dele porém agora é
 necessário passar esse parametro do prefix na url;
 
 Route::prefix('v1')->middleware(['jwt.auth'])->group(function () {
+__________________________________________________________________
+Enviando o JWT de autorização nas requisições (Authorization 
+Bearer)
 
+- Agora vamos entender como é possível armazenar o o token ao 
+cliente para requisições futuras;
+- Para realizarmos isso é necessario no postman na parte do headers
+onde constumamos colocar aceppt e apliocation/json adicionarmos
+mais um campo a chave key Authorization e no value adiconar o token
+que temos da aplicação quando válida e no inicio do token adicionar
+
+Bearer e um espaço;
+
+- Ficando assim;
+
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG
+9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEzODgwNzIwLCJleHAiOjE
+3MTM4ODQzMjAsIm5iZiI6MTcxMzg4MDcyMCwianRpIjoiaWx2VVJMMTRHUmJtbnRL
+RSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4N
+zJkYjdhNTk3NmY3In0.IU-gVbdYgTGPSLScbb1tDWvTHA83C-jfsdgbE9OBRDI
+
+- 
