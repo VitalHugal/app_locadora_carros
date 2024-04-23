@@ -910,3 +910,35 @@ token e EXP ->data de encimento do token;
 - Em config>jwt.php> procure por 'ttl';
 - Lá esta a instrução do sobre tempo;
 - Troque pelo valor em que o tempo seja de sua preferencia;
+__________________________________________________________________
+Configurando o Vue.JS no Laravel
+
+- Primeiro instalaremos algumas coisas para o nosso projeto 
+funcionar de forma integra;
+
+composer require laravel/ui
+
+- Gerar esqueleto do projeto com Vue.JS e autenticação web nativa
+ (scaffold/esqueleto)
+
+php artisan ui vue --auth
+
+- Baixar as dependencias de front-end
+
+npm install
+
+- Produzindo o bundle de front-end
+
+npm run dev 
+__________________________________________________________________
+Convertendo a view login em um componente Vue
+
+- Criamos um novo arquivo em components e atraves do 
+login.blade.php estilezamos ele, claro retirando todas as menções
+ao PHP;
+__________________________________________________________________
+Gerando o build da aplicação front com o npm run watch
+
+- No laravel 11 não precisamos realizar esse comando porém nas 
+versões anteriores sim;
+__________________________________________________________________
