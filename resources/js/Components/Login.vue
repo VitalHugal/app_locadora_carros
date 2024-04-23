@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            {{ xyz }} - {{ abc }}
             <div class="card">
                 <div class="card-header">Login (component Vue)</div>
 
@@ -59,5 +60,7 @@
 </template>
 
 <script>
-
+    export default{
+        props:['xyz', 'abc']
+    }
 </script>
