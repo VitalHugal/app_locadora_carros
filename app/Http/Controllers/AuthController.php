@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -15,7 +16,7 @@ class AuthController extends Controller
         if($token){ //usuario autenticado com sucesso
             return response()->json(['token'=> $token]);
         }else{// erro de autenticação (senha ou usuario)
-            return response()->json(['erro'=>'Usuário ou senha inválido!'], 403); 
+            return response()->json(['erro'=>'Usuário ou senha inválido!'], 403);
         }
         return 'login';
     }
@@ -26,6 +27,7 @@ class AuthController extends Controller
         return 'refresh';
     }
     public function me(){
-        return 'me';
+        //dd(auth()->user()); //Para junto do token conseguirmos verificar quais dados são apresentado para nós
+        return response()->json(auth()->user());// retornar detalhes do usuario menos sensiveis
     }
 }
