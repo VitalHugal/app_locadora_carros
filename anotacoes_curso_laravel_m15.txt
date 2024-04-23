@@ -942,3 +942,7 @@ Gerando o build da aplicação front com o npm run watch
 - No laravel 11 não precisamos realizar esse comando porém nas 
 versões anteriores sim;
 __________________________________________________________________
+Vue Props - Encaminhando o token csrf para o componente Login
+
+- Criamos uma parametro dentro do Login com o csrf;
+__________________________________________________________________
