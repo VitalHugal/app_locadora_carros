@@ -69,7 +69,10 @@ export default {
                 })
             };
             fetch(url, configuracao) // o fetch resonsavel por pegar as informções que vc precisa
-                .then(response => console.log(response))
+                .then(response => response.json()) //tranformando em json
+                .then(data => {
+                    console.log (data.token) //aqui temos o token de forma isolada
+                })
         }
     }
 }
