@@ -853,4 +853,29 @@ Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG
 RSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4N
 zJkYjdhNTk3NmY3In0.IU-gVbdYgTGPSLScbb1tDWvTHA83C-jfsdgbE9OBRDI
 
+- Com isso você tera acesso a todas as rotas;
+__________________________________________________________________
+Recuperando os dados do usuário autenticado com base no JWT
+
+- Com base no token do usuario é possivel realizar pegarmos dados
+do mesmo;
+- Foi necessário colocar a rota me dentro do grupo de rotas com 
+autenticação;
+- Dentro do metodo me codamos para retornar dados menos sensiveis 
+do usuario;
+__________________________________________________________________
+Atualizando o JWT (renovando a autorização)
+
+- Iremos aprender como atualizar o jwt;
+- Mais para frente aprederemos também como é possível configurar
+um token para um determinado tempo de uso;
+
+$token = JWTAuth::getToken();
+$refreshedToken = JWTAuth::refresh($token); // Tente atualizar o token
+return response()->json(['token' => $refreshedToken]); // Retornar o novo token JWT
+__________________________________________________________________
+Invalidando o JWT (revogando a autorização)
+
+- Iremos instaciar o metodo logout que é resposavel por invalidar 
+o token ou seja deixa ele invalido dentro da blacklist;
 - 
