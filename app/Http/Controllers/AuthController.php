@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -24,8 +24,10 @@ class AuthController extends Controller
     }
     public function logout()
     {
-        return 'logout';
+        auth('api')->logout();
+        return response()->json(['message' => 'Logout realizado com sucesso']);
     }
+
     public function refresh()
     {
         $token = JWTAuth::getToken();
