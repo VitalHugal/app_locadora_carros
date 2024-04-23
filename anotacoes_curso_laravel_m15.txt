@@ -797,3 +797,19 @@ $user->password = bcrypt('1234')
 
 $user->save()
 __________________________________________________________________
+Implementando o método de login (autenticação) e o JWT 
+(autorização)
+
+- Iremos estilizar o metodo login onde terremos a autenticação eo 
+retorno de um tokem jwt;
+- Realizamos a validação o auth selecionando a tipo api para 
+retornar um token;
+- Implementamos também um if else para validar usuario autenticado
+ou não;
+__________________________________________________________________
+Configurando rotas protegidas por autorização
+
+- Nessa etapa realizamos a craiação de um grupode rotas onde eles 
+estão protegidos através do middleware jwt.auth no caso voltado
+para autenticação ou sejá só vai ser realizado a interação com 
+aquela rota caso tenha autenticação;
