@@ -813,3 +813,23 @@ Configurando rotas protegidas por autorização
 estão protegidos através do middleware jwt.auth no caso voltado
 para autenticação ou sejá só vai ser realizado a interação com 
 aquela rota caso tenha autenticação;
+
+Route::middleware(['jwt.auth'])->group(function () { //Grupo de proteção com autenticação do usuário
+    // Rotas protegidas aqui
+    Route::apiResource('cliente', ClienteController::class);
+    Route::apiResource('carro', CarroController::class);
+    Route::apiResource('locacao', LocacaoController::class);
+    Route::apiResource('marca', MarcaController::class);
+    Route::apiResource('modelo', ModeloController::class);
+});
+
+__________________________________________________________________
+Criando um grupo de rotas protegidas com um prefix de 
+versionamento
+
+- Dentro do grupo de rotas já criado colocamos um prefix onde é 
+possível realizar um versionamento atraves dele porém agora é 
+necessário passar esse parametro do prefix na url;
+
+Route::prefix('v1')->middleware(['jwt.auth'])->group(function () {
+
