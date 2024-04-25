@@ -991,3 +991,20 @@ Convertendo a view home em um componente Vue
 app;
 - Lembre-se coloca-la no app.js assim como login, também de chama-lá
 em home.blade.php e instacia-lá em home.vue;
+__________________________________________________________________
+Criando o menu de navegação da aplicação
+
+- Aplicamos um menu dentro do app também colocamos uma 
+autenticação que aquilo só vai aperecer caso o cliente esteja 
+logado;
+__________________________________________________________________
+Criando a rota, a view e o componente marcas
+
+- Criamos na rotas em routes->web.php em seguida criamos ela em
+marcas.vue, depois adicionamos em app.js, depois criamos um diretorio
+em views com nome app e depois um aquivo marcas.blade.php e chamamos
+a view marcas;
+__________________________________________________________________
+Criando o card de busca de registros
+
+- 

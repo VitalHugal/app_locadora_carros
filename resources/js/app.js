@@ -9,6 +9,7 @@ import { createApp } from 'vue';
 import ExampleComponent from './Components/ExampleComponent.vue';
 import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
+import Marcas from './Components/Marcas.vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -21,6 +22,7 @@ const app = createApp({});
 app.component('example-component', ExampleComponent);
 app.component('login', Login);
 app.component('home', Home);
+app.component('marcas', Marcas);
 
 
 /**
