@@ -1007,4 +1007,6 @@ a view marcas;
 __________________________________________________________________
 Criando o card de busca de registros
 
-- 
+- Criamos o car de busca com boostrap para facilitar a craição do 
+front nessa etapa e vai ser assim até o final do projeto;
+- Estilizamos dentro de Marcas.vue;
