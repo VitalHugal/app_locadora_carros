@@ -11,6 +11,9 @@ import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
 import Marcas from './Components/Marcas.vue';
 import InputContainer from './Components/InputContainer.vue';
+import TableComponent from './Components/TableComponent.vue';
+import CardComponent from './Components/CardComponent.vue';
+
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -25,6 +28,8 @@ app.component('login', Login);
 app.component('home', Home);
 app.component('marcas', Marcas);
 app.component('input-container', InputContainer);
+app.component('table-component', TableComponent);
+app.component('card-component', CardComponent);
 
 
 /**

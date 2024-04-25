@@ -1017,3 +1017,19 @@ Criando um componente Vue para encapsular inputs
 utilizalo agora quando quisermos de modo mais facil para futuros
 inputs;
 __________________________________________________________________
+Criando o card de listagem de registros
+
+- Basicamento copiamos todo o card que haviamos craido 
+anteriormente e atraves do boostrap adicionamos uma tabela com a 
+propriedade hover;
+__________________________________________________________________
+Criando um componente Vue para tables
+
+- Instaciamos um component de tabelas para ser usado futuramente 
+de forma mais dinamica (TableComponent.vue);
+__________________________________________________________________
+Criando um componente Vue para cards
+
+- Instaciamos o component card e Colocamos ele na nossa tela de 
+marcas deixando cada vez mais dinamico (cardComponents.vue);
+__________________________________________________________________

@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Login (component Vue)</div>
+                    <div class="card-header">Login </div>
                     <div class="card-body">
                         <form method="POST" action="" @submit.prevent="login($event)">
                             <input type="hidden" name="_token" :value="csrf_token">
@@ -75,7 +75,8 @@ export default {
                     if (data.token) {
                         document.cookie = 'token=' + data.token + ';SameSite=Lax'//(nome/puxando o token recuperado/parametro para HTTP) Essa intrução vai permitir que os cookies sejam encaminhados por padrão nas requisições HTTP
                     }
-                    e.target.submit()//dar sequencia no envio do form de autenticação por sessão
+                    e.target.submit()//dar sequencia no envio do form de autenticação
+                    // window.location.href = '/pagina-desejada';
                 })
         }
     }
