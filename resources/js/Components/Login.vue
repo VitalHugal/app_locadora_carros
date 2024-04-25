@@ -71,7 +71,11 @@ export default {
             fetch(url, configuracao) // o fetch resonsavel por pegar as informções que vc precisa
                 .then(response => response.json()) //tranformando em json
                 .then(data => {
-                    console.log (data.token) //aqui temos o token de forma isolada
+                    console.log(data.token) //aqui temos o token de forma isolada
+                    if (data.token) {
+                        document.cookie = 'token=' + data.token + ';SameSite=Lax'//(nome/puxando o token recuperado/parametro para HTTP) Essa intrução vai permitir que os cookies sejam encaminhados por padrão nas requisições HTTP
+                    }
+                    e.target.submit()//dar sequencia no envio do form de autenticação por sessão
                 })
         }
     }

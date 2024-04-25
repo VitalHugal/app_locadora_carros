@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Laravel', ) }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -31,6 +31,27 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+
+                        {{-- Criando menu ao lado esquerdo onde só aperece caso o cliente esteja logado --}}
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Clientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Locações</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Veículos</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Carros</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Marcas</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Modelos</a>
+
+                                </div>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

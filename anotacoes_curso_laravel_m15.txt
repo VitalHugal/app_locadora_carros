@@ -946,3 +946,48 @@ Vue Props - Encaminhando o token csrf para o componente Login
 
 - Criamos uma parametro dentro do Login com o csrf;
 __________________________________________________________________
+Implementando a autenticação web (sessão) e API (JWT)
+
+- Na tela login.vue implementamos aalgumas lógicas autenticação 
+para um login em conjunto com a nossa API com JWT;
+
+
+<script>
+export default {
+    props: ['csrf_token'],
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    methods: {
+        login(e) {
+            let url = 'http://localhost:8000/api/login';
+            let configuracao = {
+                method: 'post',
+                body: new URLSearchParams({
+                    'email': this.email,
+                    'password': this.password,
+                })
+            };
+            fetch(url, configuracao) // o fetch resonsavel por pegar as informções que vc precisa
+                .then(response => response.json()) //tranformando em json
+                .then(data => {
+                    console.log(data.token) //aqui temos o token de forma isolada
+                    if (data.token) {
+                        document.cookie = 'token=' + data.token + ';SameSite=Lax'//(nome/puxando o token recuperado/parametro para HTTP) Essa intrução vai permitir que os cookies sejam encaminhados por padrão nas requisições HTTP
+                    }
+                    e.target.submit()//dar sequencia no envio do form de autenticação por sessão
+                })
+        }
+    }
+}
+</script>
+__________________________________________________________________
+Convertendo a view home em um componente Vue
+
+- Instaciamos a tela home e com isso temos já duas telas no nosso 
+app;
+- Lembre-se coloca-la no app.js assim como login, também de chama-lá
+em home.blade.php e instacia-lá em home.vue;
