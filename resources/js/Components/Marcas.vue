@@ -13,7 +13,7 @@
                                     <input type="number" class="form-control" id="inputId" aria-describedby="idHelp"
                                         placeholder="ID">
                                 </input-container>
-                                {{ nomeMarca }}
+                                <!-- {{ nomeMarca }} -->
                             </div>
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
@@ -22,7 +22,7 @@
                                     <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp"
                                         placeholder="Nome da marca">
                                 </input-container>
-                                {{ arquivoImagem }}
+                                <!-- {{ arquivoImagem }} -->
                             </div>
                         </div>
                     </template>
@@ -48,6 +48,12 @@
             </div>
         </div>
         <modal-component id="modalMarca" titulo="Adicionar marca">
+
+            <template v-slot:alertas>
+                <alert-component tipo="success" v-if="transacaoStatus == 'Adicionado' "></alert-component>
+                <alert-component tipo="danger" :detalhes="transacaoDetalhes" titulo="Erro ao tentar cadastrar a marca" v-if="transacaoStatus == 'Erro'"></alert-component>
+            </template>
+
             <template v-slot:conteudo>
                 <div class="form-group">
                     <input-container titulo="Nome da marca" id="novoNome" id-help="novoNomeHelp"
@@ -92,7 +98,9 @@ export default {
         return {
             urlBase: 'http://localhost:8000/api/v1/marca',
             nomeMarca: '',
-            arquivoImagem: []
+            arquivoImagem: [],
+            transacaoStatus:'',
+            transacaoDetalhes:[],
         }
     },
     methods: {
@@ -117,10 +125,13 @@ export default {
 
             axios.post(this.urlBase, formData, config)// Atráves do axios estamos passando  parametros para as requisições http e api
                 .then(response => {
+                    this.transacaoStatus = 'Adicionado'
                     console.log(response)
                 })
                 .catch(errors => {
-                    console.log(errors)
+                    this.transacaoStatus = 'Erro'
+                    this.transacaoDetalhes = errors.response
+                    //console.log(errors.response.data.message)
                 })
         }
     }

@@ -14,6 +14,7 @@ import InputContainer from './Components/InputContainer.vue';
 import TableComponent from './Components/TableComponent.vue';
 import CardComponent from './Components/CardComponent.vue';
 import ModalComponent from './Components/ModalComponent.vue';
+import AlertComponent from './Components/AlertComponent.vue';
 
 
 /**
@@ -32,6 +33,7 @@ app.component('input-container', InputContainer);
 app.component('table-component', TableComponent);
 app.component('card-component', CardComponent);
 app.component('modal-component', ModalComponent);
+app.component('alert-component', AlertComponent);
 
 
 /**
