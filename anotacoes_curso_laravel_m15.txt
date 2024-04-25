@@ -1010,3 +1010,10 @@ Criando o card de busca de registros
 - Criamos o car de busca com boostrap para facilitar a craição do 
 front nessa etapa e vai ser assim até o final do projeto;
 - Estilizamos dentro de Marcas.vue;
+__________________________________________________________________
+Criando um componente Vue para encapsular inputs
+
+- Instaciamos um tipo de componente voltado para o vue onde podemos
+utilizalo agora quando quisermos de modo mais facil para futuros
+inputs;
+__________________________________________________________________
