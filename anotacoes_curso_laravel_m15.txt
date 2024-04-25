@@ -1033,3 +1033,19 @@ Criando um componente Vue para cards
 - Instaciamos o component card e Colocamos ele na nossa tela de 
 marcas deixando cada vez mais dinamico (cardComponents.vue);
 __________________________________________________________________
+Extra - Adicionando um breadcrumb
+
+- Basicamente essa nomenclatura permite visuzlizarmos e que página
+ estamos da nossa tela de forma dinâmica uma vez que o utilizamos 
+{{Route::currentRouteName()}};
+__________________________________________________________________
+Criando um modal para inclusão de registros de marcas
+
+- Criamos mais um componente dessa vez sendo importado do 
+boostrap (ModalComponents.vue);
+__________________________________________________________________
+Adicionando os inputs no modal de registros de marcas
+
+- Deixamos de maneira mais dinamica o input no modal volta para 
+pagina marcas;
+__________________________________________________________________
