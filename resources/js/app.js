@@ -10,6 +10,7 @@ import ExampleComponent from './Components/ExampleComponent.vue';
 import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
 import Marcas from './Components/Marcas.vue';
+import InputContainer from './Components/InputContainer.vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -23,6 +24,7 @@ app.component('example-component', ExampleComponent);
 app.component('login', Login);
 app.component('home', Home);
 app.component('marcas', Marcas);
+app.component('input-container', InputContainer);
 
 
 /**
