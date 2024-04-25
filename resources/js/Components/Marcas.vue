@@ -74,40 +74,54 @@
 
 <script>
 import axios from 'axios'
+import { computed } from 'vue'
 
 export default {
+    computed: {
+    token() {
+        let token = document.cookie.split(';').find(indice => {
+            return indice.includes('token=');
+        });
+        token = token.split('=')[1];
+        token = 'Bearer ' + token; // Adiciona um espaço após 'Bearer'
+        return token;
+    }
+},
+
     data() {
         return {
-            urlBase:'http://localhost:8000/api/v1/marca',
+            urlBase: 'http://localhost:8000/api/v1/marca',
             nomeMarca: '',
-            arquivoImagem:[]
+            arquivoImagem: []
         }
     },
     methods: {
+
         carregarImagem(e) {
             this.arquivoImagem = e.target.files
         },
-        salvar(){
+        salvar() {
             console.log(this.nomeMarca, this.arquivoImagem[0])
-            
+
             let formData = new FormData();
             formData.append('nome', this.nomeMarca,)
-            formData.append('imagem',this.arquivoImagem[0])
+            formData.append('imagem', this.arquivoImagem[0])
 
-            let config ={
-                headers:{
+            let config = {
+                headers: {
                     'Content-Type': 'multipart/form-data', //Assim como no postman aqui estamos estancionando os parametros para recebermos imagem e returnar arquivos json 
-                    'Accept': 'application/josn'
+                    'Accept': 'application/josn',
+                    'Authorization': this.token
                 }
             }
 
-            axios.post(this.urlBase, formData, config )// Atráves do axios estamos passando  parametros para as requisições http e api
-            .then(response =>{
-                console.log(response)
-            })
-            .catch(errors =>{
-                console.log(errors)
-            })
+            axios.post(this.urlBase, formData, config)// Atráves do axios estamos passando  parametros para as requisições http e api
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(errors => {
+                    console.log(errors)
+                })
         }
     }
 
