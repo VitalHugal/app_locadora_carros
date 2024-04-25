@@ -13,6 +13,7 @@
                                     <input type="number" class="form-control" id="inputId" aria-describedby="idHelp"
                                         placeholder="ID">
                                 </input-container>
+                                {{ nomeMarca }}
                             </div>
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
@@ -21,6 +22,7 @@
                                     <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp"
                                         placeholder="Nome da marca">
                                 </input-container>
+                                {{ arquivoImagem }}
                             </div>
                         </div>
                     </template>
@@ -45,31 +47,69 @@
                 <!-- fim do card listagem de marcas -->
             </div>
         </div>
-        <modal-component id="modalMarca" titulo="Adicionar marca.">
+        <modal-component id="modalMarca" titulo="Adicionar marca">
             <template v-slot:conteudo>
                 <div class="form-group">
                     <input-container titulo="Nome da marca" id="novoNome" id-help="novoNomeHelp"
                         texto-ajuda="Inform o nome da marca.">
                         <input type="text" class="form-control" id="novoNome" aria-describedby="novoNomeHelp"
-                            placeholder="Nome da marca">
+                            placeholder="Nome da marca" v-model="nomeMarca">
                     </input-container>
                 </div>
                 <div class="form-group">
                     <input-container titulo="Imagem" id="novoImagem" id-help="novoImagemHelp"
                         texto-ajuda="Selecione uma imagem no formato png.">
                         <input type="file" class="form-control" id="novoImagem" aria-describedby="novoImagemHelp"
-                            placeholder="Selecione uma imagem">
+                            placeholder="Selecione uma imagem" @change="carregarImagem($event)">
                     </input-container>
                 </div>
             </template>
             <template v-slot:rodape>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 
+export default {
+    data() {
+        return {
+            urlBase:'http://localhost:8000/api/v1/marca',
+            nomeMarca: '',
+            arquivoImagem:[]
+        }
+    },
+    methods: {
+        carregarImagem(e) {
+            this.arquivoImagem = e.target.files
+        },
+        salvar(){
+            console.log(this.nomeMarca, this.arquivoImagem[0])
+            
+            let formData = new FormData();
+            formData.append('nome', this.nomeMarca,)
+            formData.append('imagem',this.arquivoImagem[0])
+
+            let config ={
+                headers:{
+                    'Content-Type': 'multipart/form-data', //Assim como no postman aqui estamos estancionando os parametros para recebermos imagem e returnar arquivos json 
+                    'Accept': 'application/josn'
+                }
+            }
+
+            axios.post(this.urlBase, formData, config )// Atráves do axios estamos passando  parametros para as requisições http e api
+            .then(response =>{
+                console.log(response)
+            })
+            .catch(errors =>{
+                console.log(errors)
+            })
+        }
+    }
+
+}
 </script>

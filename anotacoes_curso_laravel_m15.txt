@@ -1049,3 +1049,11 @@ Adicionando os inputs no modal de registros de marcas
 - Deixamos de maneira mais dinamica o input no modal volta para 
 pagina marcas;
 __________________________________________________________________
+Cadastrando marcas
+
+- Criamos a lógica para conseguir desenvolver o cadsatro de novas 
+marcas;
+__________________________________________________________________
+Entendendo como o token de autorização é anexado as requisições
+
+- 
