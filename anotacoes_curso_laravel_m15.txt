@@ -1064,4 +1064,10 @@ parte 2
 
 - instaciamos junto de mracsa toda a lógica necessária para erro 
 e sucesso de uma nova marca apresentada;
+__________________________________________________________________
+Recuperando os registros de marcas
 
+- criamos a logica de como recuperar os registros de marcas em 
+nosso app;
+
+__________________________________________________________________

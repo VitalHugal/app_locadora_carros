@@ -67,7 +67,7 @@
                     </input-container>
                     <!-- {{ nomeMarca }} -->
                 </div>
-               
+
                 <div class="form-group">
                     <input-container titulo="Imagem" id="novoImagem" id-help="novoImagemHelp"
                         texto-ajuda="Selecione uma imagem no formato PNG">
@@ -83,8 +83,6 @@
                 <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
-    
-    
     </div>
 </template>
 
@@ -93,59 +91,76 @@ import axios from 'axios'
 import { computed } from 'vue'
 
 export default {
-    computed: {
-        token() {
+        computed: {
+            token() {
 
-            let token = document.cookie.split(';').find(indice => {
-                return indice.includes('token=')
-            })
+                let token = document.cookie.split(';').find(indice => {
+                    return indice.includes('token=')
+                })
 
-            token = token.split('=')[1]
-            token = 'Bearer ' + token
+                token = token.split('=')[1]
+                token = 'Bearer ' + token
 
-            return token
-        }
-    },
-    data() {
-        return {
-            urlBase: 'http://localhost:8000/api/v1/marca',
-            nomeMarca: '',
-            arquivoImagem: [],
-            transacaoStatus: '',
-            transacaoDetalhes: []
-        }
-    },
-    methods: {
-        carregarImagem(e) {
-            this.arquivoImagem = e.target.files
-        },
-        salvar() {
-            console.log(this.nomeMarca, this.arquivoImagem[0])
-
-            let formData = new FormData();
-            formData.append('nome', this.nomeMarca)
-            formData.append('imagem', this.arquivoImagem[0])
-
-            let config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Accept': 'application/json',
-                    'Authorization': this.token
-                }
+                return token
             }
+        },
+        data() {
+            return {
+                urlBase: 'http://localhost:8000/api/v1/marca',
+                nomeMarca: '',
+                arquivoImagem: [],
+                transacaoStatus: '',
+                transacaoDetalhes: {},
+                marcas: []
+            }
+        },
+        methods: {
+            carregarLista(){
+                axios.get(this.urlBase)
+                .then(response =>{
+                    this.marcas = response.data
+                    console.loge(this.marcas)
+                })
+            },
+            carregarImagem(e) {
+                this.arquivoImagem = e.target.files
+            },
+            salvar() {
+                console.log(this.nomeMarca, this.arquivoImagem[0])
 
-            axios.post(this.urlBase, formData, config)
-                .then(response => {
-                    this.transacaoStatus = 'adicionado'
-                    this.transacaoDetalhes = response
-                    console.log(response)
-                })
-                .catch(errors => {
-                    this.transacaoStatus = 'erro'
-                    this.transacaoDetalhes = errors.response
-                    //errors.response.data.message
-                })
+                let formData = new FormData();
+                formData.append('nome', this.nomeMarca)
+                formData.append('imagem', this.arquivoImagem[0])
+
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
+
+                axios.post(this.urlBase, formData, config)
+                    .then(response => {
+                        this.transacaoStatus = 'adicionado'
+                        this.transacaoDetalhes = {
+                            mensagem: 'ID do registro: ' + response.data.id
+                        }
+
+                        console.log(response)
+                    })
+                    .catch(errors => {
+                        this.transacaoStatus = 'erro'
+                        this.transacaoDetalhes = {
+                            mensagem: errors.response.data.message,
+                            dados: errors.response.data.errors
+                        }
+                        //errors.response.data.message
+                    })
+            }
+        },
+        mounted(){
+            this.carregarLista()
         }
     }
-}
 </script>
