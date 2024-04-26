@@ -1133,4 +1133,8 @@ um breve linha de código no script do component marca;
 
  marcas: {data: []}
 __________________________________________________________________
+Adicionando a paginação de registros parte 2
 
+- Iremos agora trabalhar na implementação do componente de 
+paginação de registro;
+__________________________________________________________________
