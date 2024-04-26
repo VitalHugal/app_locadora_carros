@@ -37,7 +37,7 @@
                 <card-component titulo="Relação de marcas">
                     <template v-slot:conteudo>
                         <!-- Componente que instaciamos -->
-                        <table-component :dados="marcas" :titulos="{
+                        <table-component :dados="marcas.data" :titulos="{
                             id: { titulo: 'ID', tipo: 'text' },
                             nome: { titulo: 'Nome', tipo: 'text' },
                             imagem: { titulo: 'Imagem', tipo: 'imagem' },
@@ -45,8 +45,16 @@
                         }"></table-component>
                     </template>
                     <template v-slot:rodape>
-                        <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal"
-                            data-bs-target="#modalMarca">Adicionar</button>
+                        <div class="row">
+                            <div class="col">
+                                <paginate-component></paginate-component>
+                            </div>
+
+                            <div class="col">
+                               <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
+                                    data-bs-target="#modalMarca">Adicionar</button>
+                            </div>
+                        </div>
                     </template>
                 </card-component>
                 <!-- fim do card listagem de marcas -->
@@ -116,7 +124,7 @@ export default {
             arquivoImagem: [],
             transacaoStatus: '',
             transacaoDetalhes: {},
-            marcas: []
+            marcas: { data: [] }
         }
     },
     methods: {
@@ -132,6 +140,9 @@ export default {
                 .then(response => {
                     this.marcas = response.data
                     console.loge(this.marcas)
+                })
+                .catch(errors => {
+                    console.log(errors)
                 })
         },
         carregarImagem(e) {

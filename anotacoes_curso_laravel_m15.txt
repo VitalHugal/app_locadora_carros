@@ -1118,3 +1118,19 @@ Extra - Adicionando metadados aos títulos da listagem
 os titulos da nossa aplicação automatizando deixando assim de
 forma mais dinamica;
 __________________________________________________________________
+Adicionando a paginação de registros parte 1
+
+- Criamos um sistema com páginação onde foi preciso voltar lá em 
+nossos controllers como marcacontroller, abstractrepository 
+para implementar-mos nos códigos;
+__________________________________________________________________
+Corrigindo o atributo marcas
+
+- Resolvemos um erro bem simplesmtes de undefined que estava 
+sendo recebido no casole de modo que iria atrapalhar nossa 
+paginação por conta disso resolvermo isso pendencia adicionando 
+um breve linha de código no script do component marca;
+
+ marcas: {data: []}
+__________________________________________________________________
+
