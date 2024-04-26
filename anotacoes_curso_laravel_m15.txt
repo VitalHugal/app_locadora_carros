@@ -1054,6 +1054,14 @@ Cadastrando marcas
 - Criamos a lógica para conseguir desenvolver o cadsatro de novas 
 marcas;
 __________________________________________________________________
-Entendendo como o token de autorização é anexado as requisições
+Configurando os alertas de sucesso e erro do cadastro de marcas 
+parte 1
 
-- 
+- Instaciamos um novo componente (alertComponent.vue);
+__________________________________________________________________
+Configurando os alertas de sucesso e erro do cadastro de marcas 
+parte 2
+
+- instaciamos junto de mracsa toda a lógica necessária para erro 
+e sucesso de uma nova marca apresentada;
+
