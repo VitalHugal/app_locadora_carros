@@ -37,7 +37,12 @@
                 <card-component titulo="Relação de marcas">
                     <template v-slot:conteudo>
                         <!-- Componente que instaciamos -->
-                        <table-component></table-component>
+                        <table-component :dados="marcas" :titulos="{
+                            id: { titulo: 'ID', tipo: 'text' },
+                            nome: { titulo: 'Nome', tipo: 'text' },
+                            imagem: { titulo: 'Imagem', tipo: 'imagem' },
+                            created_at: { titulo: 'Data de criação', tipo: 'data' },
+                        }"></table-component>
                     </template>
                     <template v-slot:rodape>
                         <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal"
@@ -79,7 +84,7 @@
             </template>
 
             <template v-slot:rodape>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
@@ -91,76 +96,83 @@ import axios from 'axios'
 import { computed } from 'vue'
 
 export default {
-        computed: {
-            token() {
+    computed: {
+        token() {
 
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=')
-                })
+            let token = document.cookie.split(';').find(indice => {
+                return indice.includes('token=')
+            })
 
-                token = token.split('=')[1]
-                token = 'Bearer ' + token
+            token = token.split('=')[1]
+            token = 'Bearer ' + token
 
-                return token
+            return token
+        }
+    },
+    data() {
+        return {
+            urlBase: 'http://localhost:8000/api/v1/marca',
+            nomeMarca: '',
+            arquivoImagem: [],
+            transacaoStatus: '',
+            transacaoDetalhes: {},
+            marcas: []
+        }
+    },
+    methods: {
+        carregarLista() {
+            let config = {
+                headers: {
+                    'Accept': 'application/json', //definição do cabeçalho de forma manual enviando os paramentro autorização com o token e solicitando arquivos json
+                    'Authorization': this.token
+                }
             }
-        },
-        data() {
-            return {
-                urlBase: 'http://localhost:8000/api/v1/marca',
-                nomeMarca: '',
-                arquivoImagem: [],
-                transacaoStatus: '',
-                transacaoDetalhes: {},
-                marcas: []
-            }
-        },
-        methods: {
-            carregarLista(){
-                axios.get(this.urlBase)
-                .then(response =>{
+
+            axios.get(this.urlBase, config)
+                .then(response => {
                     this.marcas = response.data
                     console.loge(this.marcas)
                 })
-            },
-            carregarImagem(e) {
-                this.arquivoImagem = e.target.files
-            },
-            salvar() {
-                console.log(this.nomeMarca, this.arquivoImagem[0])
-
-                let formData = new FormData();
-                formData.append('nome', this.nomeMarca)
-                formData.append('imagem', this.arquivoImagem[0])
-
-                let config = {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
-
-                axios.post(this.urlBase, formData, config)
-                    .then(response => {
-                        this.transacaoStatus = 'adicionado'
-                        this.transacaoDetalhes = {
-                            mensagem: 'ID do registro: ' + response.data.id
-                        }
-
-                        console.log(response)
-                    })
-                    .catch(errors => {
-                        this.transacaoStatus = 'erro'
-                        this.transacaoDetalhes = {
-                            mensagem: errors.response.data.message,
-                            dados: errors.response.data.errors
-                        }
-                        //errors.response.data.message
-                    })
-            }
         },
-        mounted(){
-            this.carregarLista()
+        carregarImagem(e) {
+            this.arquivoImagem = e.target.files
+        },
+        salvar() {
+            console.log(this.nomeMarca, this.arquivoImagem[0])
+
+            let formData = new FormData();
+            formData.append('nome', this.nomeMarca)
+            formData.append('imagem', this.arquivoImagem[0])
+
+            let config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': 'application/json',
+                    'Authorization': this.token
+                }
+            }
+
+            axios.post(this.urlBase, formData, config)
+                .then(response => {
+                    this.transacaoStatus = 'adicionado'
+                    this.transacaoDetalhes = {
+                        mensagem: 'ID do registro: ' + response.data.id
+                    }
+
+                    console.log(response)
+                })
+                .catch(errors => {
+                    this.transacaoStatus = 'erro'
+                    this.transacaoDetalhes = {
+                        mensagem: errors.response.data.message,
+                        dados: errors.response.data.errors
+                    }
+                    //errors.response.data.message
+                })
         }
+    },
+    mounted() {
+        this.carregarLista()
     }
+}
 </script>
