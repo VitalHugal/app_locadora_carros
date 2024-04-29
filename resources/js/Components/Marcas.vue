@@ -136,29 +136,35 @@ export default {
     },
     methods: {
         pesquisar() {
-            console.log(this.busca)
+            //console.log(this.busca)
+
             let filtro = ''
 
             for (let chave in this.busca) {
+
                 if (this.busca[chave]) {
                     //console.log(chave, this.busca[chave])
                     if (filtro != '') {
-                        filtro += ';'
+                        filtro += ";"
                     }
+
                     filtro += chave + ':like:' + this.busca[chave]
                 }
             }
             if (filtro != '') {
-                this.urlFiltro = '&filtro=' +filtro
+                this.urlPaginacao = 'page=1'
+                this.urlFiltro = '&filtro=' + filtro
+            } else {
+                this.urlFiltro = ''
             }
+
             this.carregarLista()
         },
         paginacao(l) {
             if (l.url) {
-                //this.urlBase = l.url //ajustando a url de consulta com o parametro de página
-                //console.log('url do botao de paginação clicado',l.url.split('?')[1])
+                //this.urlBase = l.url //ajustando a url de consulta com o parâmetro de página
                 this.urlPaginacao = l.url.split('?')[1]
-                this.carregarLista()// requisitando novamente os dados para nossas API
+                this.carregarLista() //requisitando novamente os dados para nossa API
             }
         },
         carregarLista() {
@@ -169,9 +175,9 @@ export default {
                 }
             }
             let url = this.urlBase + '?' + this.urlPaginacao + this.urlFiltro
-            
+
             console.log(url)
-            axios.get(this.urlBase, config)
+            axios.get(url, config)
                 .then(response => {
                     this.marcas = response.data
                     //console.log(this.marcas)
