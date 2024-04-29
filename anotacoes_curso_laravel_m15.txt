@@ -1188,3 +1188,7 @@ Implementando o modal de remoção de registros parte 1
 - Realizamos a criação do modal de remoção e colocamos todas as 
 aletrações que haviamos feito para o visualizar;
 _________________________________________________________________
+Implementando o modal de remoção de registros parte 2
+
+- implementamos em methods: a função de deletar do nosso projeto;
+_________________________________________________________________
