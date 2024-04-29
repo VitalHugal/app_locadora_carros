@@ -14,9 +14,9 @@
                 <tr v-for="obj, chave in dadosFiltrados" :key="chave">
                     <td v-for="valor, chaveValor in obj" :key="chaveValor">
                         <span v-if="titulos[chaveValor].tipo == 'text'">{{ valor }}</span>
-                        <span v-if="titulos[chaveValor].tipo == 'data'">{{ '...' + valor }}</span>
+                        <span v-if="titulos[chaveValor].tipo == 'data'"> {{ valor | formataDataTempo }} </span>
                         <span v-if="titulos[chaveValor].tipo == 'imagem'">
-                            <img :src="'/storage/' + valor" width="50" height="50">
+                            <img :src="'/storage/'+valor" width="50" height="50">
                         </span>
                     </td>
                     <td v-if="visualizar.visivel || atualizar.visivel || remover.visivel">
@@ -38,10 +38,31 @@
 
 <script>
 export default {
+    filters: {
+        formataDataTempo(d) {
+            if (!d) return '' 
+
+            d=d.split('T')
+            let data = d[0]
+            let tempo = d[1]
+            
+            //formata data
+            console.log(data.split('-'))
+            data =data[2]+'/'+data[1] + '/'+data[0]
+            
+            //formata tempo
+            console.log(tempo.split('.'))
+            tempo =tempo[0]
+
+            return '---' + d
+        }
+    },
     props: ['dados', 'titulos', 'visualizar', 'atualizar', 'remover'],
     methods: {
         setStore(obj) {
             this.$store.state.transacao.status = ''
+            this.$store.state.transacao.mensagem = ''
+            this.$store.state.transacao.dados = ''
             this.$store.state.item = obj
 
         }

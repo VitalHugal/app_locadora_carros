@@ -135,9 +135,11 @@
             <template v-slot:alertas>
                 <alert-component tipo="success" titulo="Transação realizada com sucesso."
                     :detalhes="$store.state.transacao"
-                    v-if="$store.state.transacao.status == 'sucesso'"></alert-component>
+                    v-if="$store.state.transacao.status == 'sucesso'">
+                </alert-component>
                 <alert-component tipo="danger" titulo="Erro na transação." :detalhes="$store.state.transacao"
-                    v-if="$store.state.transacao.status == 'erro'"></alert-component>
+                    v-if="$store.state.transacao.status == 'erro'">
+                </alert-component>
             </template>
             <template v-slot:conteudo v-if="$store.state.transacao.status != 'sucesso'">
                 <input-container titulo="ID">
@@ -158,7 +160,13 @@
         <!-- inicio do modal de atualização de marca -->
         <modal-component id="modalMarcaAtualizar" titulo="Atualizar marca">
             <template v-slot:alertas>
-
+                <alert-component tipo="success" titulo="Transação realizada com sucesso."
+                    :detalhes="$store.state.transacao"
+                    v-if="$store.state.transacao.status == 'sucesso'">
+                </alert-component>
+                <alert-component tipo="danger" titulo="Erro na transação." :detalhes="$store.state.transacao"
+                    v-if="$store.state.transacao.status == 'erro'">
+                </alert-component>
             </template>
             <template v-slot:conteudo v-if="$store.state.transacao.status != 'sucesso'">
                 <div class="form-group">
@@ -176,7 +184,6 @@
                             @change="carregarImagem($event)">
                     </input-container>
                 </div>
-                {{ $store.state.item }}
             </template>
             <template v-slot:rodape>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -227,30 +234,33 @@ export default {
             formData.append('_method', 'patch')
             formData.append('nome', this.$store.state.item.nome)
             if (this.arquivoImagem[0]) {
-                formData.append('imagem',this.arquivoImagem[0])
+                formData.append('imagem', this.arquivoImagem[0])
             }
-            
 
-            let url = this.urlBase + '/'+ this.$store.state.item.id
+
+            let url = this.urlBase + '/' + this.$store.state.item.id
 
             let config = {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Accept': 'application/json',
                     'Authorization': this.token,
-                    
+
                 }
             }
 
             axios.post(url, formData, config)
-            .then(response =>{
-                console.log('Atualizado', response)
-                atualizarImagem.value = ''
-                this.carregarLista()
-            })
-            .catch(errors =>{
-                console.log('Erro de atualização', errors. response)
-            })
+                .then(response => {
+                    this.$store.state.transacao.status = 'sucesso'
+                    this.$store.state.transacao.mensagem = 'Registro de marca atualizado com sucesso'
+                    atualizarImagem.value = ''
+                    this.carregarLista()
+                })
+                .catch(errors => {
+                    this.$store.state.transacao.status = 'erro'
+                    this.$store.state.transacao.mensagem = errors.response.data.message
+                    this.$store.state.transacao.dados = errors.response.data.errors
+                })
         },
         remover() {
             let confirmacao = confirm('Tem certeza que deseja remover esse registro?')

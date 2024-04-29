@@ -9,6 +9,7 @@ import { createStore } from 'vuex';
 
 import './bootstrap';
 import { createApp } from 'vue';
+import App from './App.vue';
 import ExampleComponent from './Components/ExampleComponent.vue';
 import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
@@ -27,13 +28,26 @@ import PaginateComponent from './Components/PaginateComponent.vue';
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
+const app = createApp(App);
+app.config.globalProperties.$filters = {
+    formataDataTempo(d) {
+      if (!d) return '';
+  
+      const [data, tempo] = d.split('T');
+      const dataFormatada = data.split('-').reverse().join('/');
+      const horaFormatada = tempo.split('.')[0];
+  
+      return `${dataFormatada} às ${horaFormatada}`;
+    }
+  };
 
 const app = createApp({});
 const store = createStore({ // Crie a store Vuex
     state() {
         return {
             item: {},
-            transacao: {status: '', mensagem: ''}
+            transacao: {status: '', mensagem: '', dados: ''},
+
         };
     }
 });

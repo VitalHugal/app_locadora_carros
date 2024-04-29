@@ -1208,3 +1208,9 @@ Refactoring do update de marca do lado do back-end
 - Foi necessario voltamos um passo para conseguirmos dar 
 andamento na nossa ação de atualizar;
 _________________________________________________________________
+Implementando o modal de atualização de registros parte 3
+
+- Nessa etapa realizamos a implementação das mensagens de 
+sucesso e de erro de transação;
+_________________________________________________________________
+
