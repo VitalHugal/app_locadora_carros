@@ -35,6 +35,7 @@ export default {
     props: ['dados', 'titulos', 'visualizar','atualizar','remover'],
     methods:{
         setStore(obj){
+            this.$store.state.transacao.status = ''
             this.$store.state.item = obj
             
         }

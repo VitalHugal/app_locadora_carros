@@ -1192,3 +1192,8 @@ Implementando o modal de remoção de registros parte 2
 
 - implementamos em methods: a função de deletar do nosso projeto;
 _________________________________________________________________
+Implementando o modal de remoção de registros parte 
+
+- Iremos implementar as mensagens de sucesso ou de erro na 
+remoção do item desejado;
+_________________________________________________________________

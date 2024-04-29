@@ -32,7 +32,8 @@ const app = createApp({});
 const store = createStore({ // Crie a store Vuex
     state() {
         return {
-            item: {}
+            item: {},
+            transacao: {status: '', mensagem: ''}
         };
     }
 });

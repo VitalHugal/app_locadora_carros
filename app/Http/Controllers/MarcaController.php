@@ -76,7 +76,7 @@ class MarcaController extends Controller
         $marca = $this->marca->with('modelos')->find($id);
 
         if ($marca === null) {
-            return response()->json(['erro' => 'Recurso indisponivel - (ver id)'], 404); //json
+            return response()->json(['erro' => 'Recurso indisponivel '], 404); //json
         }
         return response()->json($marca, 200);
     }
@@ -96,7 +96,7 @@ class MarcaController extends Controller
         $marca = $this->marca->find($id);
 
         if ($marca === null) {
-            return response()->json(['erro' => 'Recurso indisponivel - (Atualização)'], 404);
+            return response()->json(['erro' => 'Recurso indisponivel '], 404);
         }
         if ($request->method() === 'PATCH') {
 
@@ -144,13 +144,13 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->find($id);
         if ($marca === null) {
-            return response()->json(['erro' => 'Recurso indisponivel - (Exclusão)'], 404);
+            return response()->json(['erro' => 'Recurso indisponivel '], 404);
         }
         //remove o arquivo antigo caso um novo arquivo tenha sido enviado no request
 
         Storage::disk('public')->delete($marca->imagem);
 
         $marca->delete();
-        return response()->json(['msg' => 'A marca foi removida com sucesso'], 200);
+        return response()->json(['msg' => 'A marca foi removida com sucesso!'], 200);
     }
 }
