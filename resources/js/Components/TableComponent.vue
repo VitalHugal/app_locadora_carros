@@ -4,7 +4,11 @@
             <thead>
                 <tr>
                     <th scope="col" v-for="t, key in titulos" :key="key">{{ t.titulo }}</th>
+                    <th v-if="visualizar || atualizar || remover">
+                       
+                    </th>
                 </tr>
+
             </thead>
             <tbody>
                 <tr v-for="obj, chave in dadosFiltrados" :key="chave">
@@ -15,6 +19,11 @@
                             <img :src="'/storage/' + valor" width="50" height="50">
                         </span>
                     </td>
+                    <td v-if="visualizar || atualizar || remover">
+                        <button v-if="visualizar" class="btn btn-outline-primary btn-sm m-1" data-bs-toggle="modal" data-bs-target="#modalMarcaVisualizar">Visualizar</button>
+                        <button v-if="atualizar" class="btn btn-outline-primary btn-sm m-1">Atualizar</button>
+                        <button v-if="remover" class="btn btn-outline-danger btn-sm m-1">Remover</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -23,7 +32,7 @@
 
 <script>
 export default {
-    props: ['dados', 'titulos'],
+    props: ['dados', 'titulos', 'visualizar','atualizar','remover'],
     computed: {
         dadosFiltrados() {
             let campos = Object.keys(this.titulos)
