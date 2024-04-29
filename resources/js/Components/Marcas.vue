@@ -49,9 +49,8 @@
                             <div class="col">
                                 <paginate-component></paginate-component>
                             </div>
-
                             <div class="col">
-                               <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
                                     data-bs-target="#modalMarca">Adicionar</button>
                             </div>
                         </div>
