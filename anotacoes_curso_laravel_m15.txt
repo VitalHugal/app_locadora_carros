@@ -1137,4 +1137,11 @@ Adicionando a paginação de registros parte 2
 
 - Iremos agora trabalhar na implementação do componente de 
 paginação de registro;
+- Adiconamos ele e fizemos a implementação da lógica para ele 
+funcionar de maneira dinâmica;
 _________________________________________________________________
+Buscando registros parte 1
+
+- Nessa primeira parte fizemos apenas a implemntação dá lógica 
+basica de como vai funcionar o campo 'busca de marcas' tanto
+ pelo id e nome ou por apenas um deles;
