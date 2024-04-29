@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+//importando e configurando o vuex
+import { createStore } from 'vuex';
+
 import './bootstrap';
 import { createApp } from 'vue';
 import ExampleComponent from './Components/ExampleComponent.vue';
@@ -18,6 +21,7 @@ import AlertComponent from './Components/AlertComponent.vue';
 import PaginateComponent from './Components/PaginateComponent.vue';
 
 
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -25,6 +29,14 @@ import PaginateComponent from './Components/PaginateComponent.vue';
  */
 
 const app = createApp({});
+const store = createStore({ // Crie a store Vuex
+    state() {
+        return {
+            item: {}
+        };
+    }
+});
+
 
 app.component('example-component', ExampleComponent);
 app.component('login', Login);
@@ -56,4 +68,8 @@ app.component('paginate-component', PaginateComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
+
+
+// Use o store na instância da aplicação
+app.use(store);
 app.mount('#app');

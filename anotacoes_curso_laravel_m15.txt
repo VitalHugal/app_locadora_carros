@@ -1147,4 +1147,44 @@ referente a paginação, busca por id, nome e por letras lembrando
 de colocar o simbolo de porcetagem, fizemos também a vlidação 
 para busca com as paginas;
 _________________________________________________________________
+Adicionando os botões para visualização, atualização e remoção 
+de registros
 
+- Craimos botões de ações para o nosso projeto;
+_________________________________________________________________
+Implementando o modal de visualização da marca parte 1
+
+- Intilizamos a implementação do modal no botao visualizar e 
+iremos em seguido desenvolver os elementos para deixar cada vez 
+mais dinâmico ;
+_________________________________________________________________
+Implementando o modal de visualização da marca parte 2
+
+- Nessa etapa cramos um objeto para visualizar a fim de deixar 
+cada vez mais dinâmico possibilitando mudanças futuras sem 
+afetar todo nosso sistema;
+_________________________________________________________________
+Instalando e configurando o Vuex no projeto
+
+- Gerenciador de estado do VUE;
+- Recomendo o estudo desse pacote;
+- Pacote instalado e testado de modo que podemos colocar-lo em 
+qualquer lugar do nosso projeto logo iremos praticarmar um pouco 
+mais a usabilidade desse pacote;
+- Para teste implemente isso no seu código e vejo como ele 
+responde bem em diversos lugares;
+
+{{ $store.state.teste }}
+_________________________________________________________________
+Implementando o modal de visualização da marca parte 3
+
+- A ideia agora é quando clicarmos em visualizar implemtarmos os 
+dados dessa dessa ação no vuex e quando clicarmos em outra marca 
+esses dados anteriores serem perdidos para a implemtação 
+dos novos;
+_________________________________________________________________
+Implementando o modal de remoção de registros parte 1
+
+- Realizamos a criação do modal de remoção e colocamos todas as 
+aletrações que haviamos feito para o visualizar;
+_________________________________________________________________

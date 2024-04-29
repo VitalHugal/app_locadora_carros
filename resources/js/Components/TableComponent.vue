@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <th scope="col" v-for="t, key in titulos" :key="key">{{ t.titulo }}</th>
-                    <th v-if="visualizar || atualizar || remover">
+                    <th v-if="visualizar.visivel || atualizar || remover.visivel">
                        
                     </th>
                 </tr>
@@ -19,10 +19,10 @@
                             <img :src="'/storage/' + valor" width="50" height="50">
                         </span>
                     </td>
-                    <td v-if="visualizar || atualizar || remover">
-                        <button v-if="visualizar" class="btn btn-outline-primary btn-sm m-1" data-bs-toggle="modal" data-bs-target="#modalMarcaVisualizar">Visualizar</button>
+                    <td v-if="visualizar.visivel || atualizar || remover.visivel">
+                        <button v-if="visualizar.visivel" class="btn btn-outline-primary btn-sm m-1" :data-bs-toggle="visualizar.dataToggle" :data-bs-target="visualizar.dataTarget" @click="setStore(obj)">Visualizar</button>
                         <button v-if="atualizar" class="btn btn-outline-primary btn-sm m-1">Atualizar</button>
-                        <button v-if="remover" class="btn btn-outline-danger btn-sm m-1">Remover</button>
+                        <button v-if="remover.visivel" class="btn btn-outline-danger btn-sm m-1" :data-bs-toggle="remover.dataToggle" :data-bs-target="remover.dataTarget" @click="setStore(obj)" >Remover</button>
                     </td>
                 </tr>
             </tbody>
@@ -33,6 +33,12 @@
 <script>
 export default {
     props: ['dados', 'titulos', 'visualizar','atualizar','remover'],
+    methods:{
+        setStore(obj){
+            this.$store.state.item = obj
+            
+        }
+    },
     computed: {
         dadosFiltrados() {
             let campos = Object.keys(this.titulos)
