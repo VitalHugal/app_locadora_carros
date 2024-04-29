@@ -1197,3 +1197,9 @@ Implementando o modal de remoção de registros parte
 - Iremos implementar as mensagens de sucesso ou de erro na 
 remoção do item desejado;
 _________________________________________________________________
+Implementando o modal de atualização de registros parte 1
+
+- Implemtamos o modal de atualizaçõa onde ele é igual ao modal 
+de craição uma vez que podemos na atualização mudar o alterar 
+valores do compo nome e campo imagem;
+_________________________________________________________________

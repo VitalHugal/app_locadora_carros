@@ -1,6 +1,6 @@
 <template>
     <div :class="estilo" role="alert">
-        {{titulo}}
+        {{ titulo }}
         <hr>
         <p>{{ detalhes.mensagem }}</p>
         <br>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-    export default { 
-        props: ['tipo', 'titulo', 'detalhes'],
-        computed: {
-            estilo() {
-                return 'alert alert-'+this.tipo
-            }
+export default {
+    props: ['tipo', 'titulo', 'detalhes'],
+    computed: {
+        estilo() {
+            return 'alert alert-' + this.tipo
         }
     }
+}
 </script>
