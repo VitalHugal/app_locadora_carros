@@ -124,12 +124,14 @@ export default {
     data() {
         return {
             urlBase: 'http://localhost:8000/api/v1/marca',
+            urlPaginacao: '',
+            urlFiltro: '',
             nomeMarca: '',
             arquivoImagem: [],
             transacaoStatus: '',
             transacaoDetalhes: {},
             marcas: { data: [] },
-            busca: { id: "", nome: "" },
+            busca: { id: '', nome: '' },
         }
     },
     methods: {
@@ -146,11 +148,16 @@ export default {
                     filtro += chave + ':like:' + this.busca[chave]
                 }
             }
-            console.log(filtro)
+            if (filtro != '') {
+                this.urlFiltro = '&filtro=' +filtro
+            }
+            this.carregarLista()
         },
         paginacao(l) {
             if (l.url) {
-                this.urlBase = l.url //ajustando a url de consulta com o parametro de página
+                //this.urlBase = l.url //ajustando a url de consulta com o parametro de página
+                //console.log('url do botao de paginação clicado',l.url.split('?')[1])
+                this.urlPaginacao = l.url.split('?')[1]
                 this.carregarLista()// requisitando novamente os dados para nossas API
             }
         },
@@ -161,7 +168,9 @@ export default {
                     'Authorization': this.token
                 }
             }
-
+            let url = this.urlBase + '?' + this.urlPaginacao + this.urlFiltro
+            
+            console.log(url)
             axios.get(this.urlBase, config)
                 .then(response => {
                     this.marcas = response.data
