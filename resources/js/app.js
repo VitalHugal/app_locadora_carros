@@ -1,3 +1,4 @@
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -5,11 +6,10 @@
  */
 
 //importando e configurando o vuex
-import { createStore } from 'vuex';
 
 import './bootstrap';
 import { createApp } from 'vue';
-import App from './App.vue';
+import { createStore } from 'vuex';
 import ExampleComponent from './Components/ExampleComponent.vue';
 import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
@@ -22,37 +22,46 @@ import AlertComponent from './Components/AlertComponent.vue';
 import PaginateComponent from './Components/PaginateComponent.vue';
 
 
-
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
-const app = createApp(App);
+const app = createApp({});
+
+// Registrando o filtro globalmente
 app.config.globalProperties.$filters = {
     formataDataTempo(d) {
-      if (!d) return '';
-  
-      const [data, tempo] = d.split('T');
-      const dataFormatada = data.split('-').reverse().join('/');
-      const horaFormatada = tempo.split('.')[0];
-  
-      return `${dataFormatada} às ${horaFormatada}`;
-    }
-  };
+      if (!d) return "";
+      
+      d = d.split("T")
+      let data = d[0]
+      data = data.split("-")
+      data = data[2] + "/" + data[1] + "/" + data[0];
+   
+      let tempo = d[1]  
+      tempo = tempo.split('.')
+      tempo = tempo[0]     
+   
+      return data + ' ' + tempo
+    },
+  }
 
-const app = createApp({});
-const store = createStore({ // Crie a store Vuex
+
+// Crie a store Vuex
+const store = createStore({ 
     state() {
         return {
             item: {},
             transacao: {status: '', mensagem: '', dados: ''},
-
         };
     }
 });
 
+// Use o store na instância da aplicação
+app.use(store);
 
+// Registrando os componentes
 app.component('example-component', ExampleComponent);
 app.component('login', Login);
 app.component('home', Home);
@@ -83,8 +92,4 @@ app.component('paginate-component', PaginateComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-
-
-// Use o store na instância da aplicação
-app.use(store);
 app.mount('#app');

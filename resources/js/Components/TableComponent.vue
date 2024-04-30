@@ -12,13 +12,14 @@
             </thead>
             <tbody>
                 <tr v-for="obj, chave in dadosFiltrados" :key="chave">
-                    <td v-for="valor, chaveValor in obj" :key="chaveValor">
-                        <span v-if="titulos[chaveValor].tipo == 'text'">{{ valor }}</span>
-                        <span v-if="titulos[chaveValor].tipo == 'data'"> {{ valor | formataDataTempo }} </span>
-                        <span v-if="titulos[chaveValor].tipo == 'imagem'">
-                            <img :src="'/storage/'+valor" width="50" height="50">
+                    <td v-for="(valor, chaveValor) in obj" :key="chaveValor">
+                        <span v-if="titulos[chaveValor].tipo === 'text'">{{ valor }}</span>
+                        <span v-else-if="titulos[chaveValor].tipo === 'data'">{{  $filters.formataDataTempo(valor) }}</span>
+                        <span v-else-if="titulos[chaveValor].tipo === 'imagem'">
+                            <img :src="'/storage/' + valor" width="50" height="50">
                         </span>
                     </td>
+
                     <td v-if="visualizar.visivel || atualizar.visivel || remover.visivel">
                         <button v-if="visualizar.visivel" class="btn btn-outline-primary btn-sm m-1"
                             :data-bs-toggle="visualizar.dataToggle" :data-bs-target="visualizar.dataTarget"
@@ -37,26 +38,8 @@
 </template>
 
 <script>
+
 export default {
-    filters: {
-        formataDataTempo(d) {
-            if (!d) return '' 
-
-            d=d.split('T')
-            let data = d[0]
-            let tempo = d[1]
-            
-            //formata data
-            console.log(data.split('-'))
-            data =data[2]+'/'+data[1] + '/'+data[0]
-            
-            //formata tempo
-            console.log(tempo.split('.'))
-            tempo =tempo[0]
-
-            return '---' + d
-        }
-    },
     props: ['dados', 'titulos', 'visualizar', 'atualizar', 'remover'],
     methods: {
         setStore(obj) {
@@ -64,7 +47,6 @@ export default {
             this.$store.state.transacao.mensagem = ''
             this.$store.state.transacao.dados = ''
             this.$store.state.item = obj
-
         }
     },
     computed: {
@@ -75,7 +57,7 @@ export default {
             this.dados.map((item, chave) => {
                 let itemFiltrado = {}
                 campos.forEach(campo => {
-                    itemFiltrado[campo] = item[campo] //utilizar a sintaxe de array para atribuir valores a objetos
+                    itemFiltrado[campo] = item[campo]
                 })
                 dadosFiltrados.push(itemFiltrado)
             })

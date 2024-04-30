@@ -19,7 +19,7 @@ Route::get('/user', function (Request $request) {
 // Desse modo é voltado para web
 
 Route::post('login', [AuthController::class, 'login']);
-
+Route::post('refresh', [AuthController::class, 'refresh']); // rota adcionada par ser possível renovar os tokens
 
 
 
@@ -35,6 +35,5 @@ Route::prefix('v1')->middleware(['jwt.auth'])->group(function () {
     Route::apiResource('modelo', ModeloController::class);
 
     Route::post('logout', [AuthController::class, 'logout']);//Rota adicionada para ser possível invalidar o token e realizar o logout
-    Route::post('refresh', [AuthController::class, 'refresh']); // rota adcionada par ser possível renovar os tokens
     Route::post('me', [AuthController::class, 'me']);  //Rota adicionada no grupo de auteticação para ser possível pegar dados do usuario
 });

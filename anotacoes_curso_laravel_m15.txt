@@ -1213,4 +1213,24 @@ Implementando o modal de atualização de registros parte 3
 - Nessa etapa realizamos a implementação das mensagens de 
 sucesso e de erro de transação;
 _________________________________________________________________
+Adicionando filtros para formatação de datas
 
+- Deixando a data ea hora no formato brasileiro;
+_________________________________________________________________
+Axios - Interceptando requisições e respostas HTTP
+
+- em bootstrap.js adicionamos axios para interceptar a resposta 
+ea requisição;
+_________________________________________________________________
+Axios - Interceptando o request e configurando os headers
+
+- Aqui nessa etapa colocamos toda lógica do token onde temos o 
+accept eo authorization em apenas um local onde deixo mais 
+dinâmico nosso código penso em futuramente em manutenções;
+_________________________________________________________________
+Axios - Interceptando o response e realizando um auto refresh do 
+JWT
+
+- Aqui realizamos uma especie de reload para os cokkies da 
+pagina;
+_________________________________________________________________
