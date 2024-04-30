@@ -1234,3 +1234,13 @@ JWT
 - Aqui realizamos uma especie de reload para os cokkies da 
 pagina;
 _________________________________________________________________
+Oque é redis ?
+
+- Basicamente falando ele é um sistema de armazenamento de dados 
+em memoria difrenete dos banco de dados convencionais que são de 
+armazenamento em disco;
+- 
+_________________________________________________________________
+Instalação do redis
+
+- 

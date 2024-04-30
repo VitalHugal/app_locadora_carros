@@ -10,7 +10,7 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import { createStore } from 'vuex';
-import ExampleComponent from './Components/ExampleComponent.vue';
+//import ExampleComponent from './Components/ExampleComponent.vue';
 import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
 import Marcas from './Components/Marcas.vue';
@@ -20,6 +20,11 @@ import CardComponent from './Components/CardComponent.vue';
 import ModalComponent from './Components/ModalComponent.vue';
 import AlertComponent from './Components/AlertComponent.vue';
 import PaginateComponent from './Components/PaginateComponent.vue';
+import WelcomeApp from './Components/WelcomeApp.vue';
+import Clientes from './Components/Clientes.vue';
+import Locacao from './Components/Locacao.vue';
+import Carros from './Components/Carros.vue';
+import Modelo from './Components/Modelo.vue';
 
 
 /**
@@ -62,7 +67,7 @@ const store = createStore({
 app.use(store);
 
 // Registrando os componentes
-app.component('example-component', ExampleComponent);
+//app.component('example-component', ExampleComponent);
 app.component('login', Login);
 app.component('home', Home);
 app.component('marcas', Marcas);
@@ -72,6 +77,11 @@ app.component('card-component', CardComponent);
 app.component('modal-component', ModalComponent);
 app.component('alert-component', AlertComponent);
 app.component('paginate-component', PaginateComponent);
+app.component('welcome-app', WelcomeApp);
+app.component('locacao', Locacao);
+app.component('clientes', Clientes);
+app.component('modelo', Modelo);
+app.component('carros', Carros);
 
 
 /**

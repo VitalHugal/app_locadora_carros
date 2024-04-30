@@ -35,17 +35,17 @@
                         {{-- Criando menu ao lado esquerdo onde só aperece caso o cliente esteja logado --}}
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Clientes</a>
+                                <a class="nav-link" href="clientes">Clientes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Locações</a>
+                                <a class="nav-link" href="locacao">Locações</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Veículos</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Carros</a>
+                                    <a class="dropdown-item" href="carro">Carros</a>
                                     <a class="dropdown-item" href="{{ route('marcas') }}">Marcas</a>
-                                    <a class="dropdown-item" href="#">Modelos</a>
+                                    <a class="dropdown-item" href="modelo">Modelos</a>
 
                                 </div>
                             </li>
