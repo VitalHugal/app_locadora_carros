@@ -312,9 +312,15 @@ export default {
             }
         },
         carregarLista() {
-          
+            // let config = {
+            //     headers: {
+            //         'Accept': 'application/json', //definição do cabeçalho de forma manual enviando os paramentro autorização com o token e solicitando arquivos json
+            //         'Authorization': this.token
+            //     }
+            // }
             let url = this.urlBase + '?' + this.urlPaginacao + this.urlFiltro
 
+            console.log(url)
             axios.get(url)
                 .then(response => {
                     this.marcas = response.data
