@@ -43,11 +43,11 @@
                             :remover="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalModeloRemover' }"
                             :titulos="{
                                 id: { titulo: 'ID', tipo: 'text' },
-                                marca_id: { titulo: 'Marca Id', tipo: 'text' },
+                                marca_id: { titulo: 'Marca ID', tipo: 'text' },
                                 nome: { titulo: 'Nome', tipo: 'text' },
                                 imagem: { titulo: 'Imagem', tipo: 'imagem' },
                                 numero_portas: { titulo: 'Número de portas', tipo: 'text' },
-                                lugares: { titulo: 'lugares', tipo: 'text' },
+                                lugares: { titulo: 'Lugares', tipo: 'text' },
                                 air_bag: { titulo: 'Air-Bag', tipo: 'text' },
                                 abs: { titulo: 'ABS', tipo: 'text' },
                                 created_at: { titulo: 'Data de criação', tipo: 'data' },
@@ -86,21 +86,53 @@
 
             <template v-slot:conteudo>
                 <div class="form-group">
+                    <input-container titulo="Marca ID" id="novoMarcaIDModelo" id-help="novoMarcaIDHelpModelo"
+                        texto-ajuda="Informe o id da marca.">
+                        <input type="text" class="form-control" id="novoMarcaIDModelo" aria-describedby="novoMarcaIDHelpModelo"
+                            placeholder="Marca ID" v-model="marca_id">
+                    </input-container>
+                </div>
+                <div class="form-group">
                     <input-container titulo="Nome do modelo" id="novoNomeModelo" id-help="novoNomeHelpModelo"
-                        texto-ajuda="Informe o nome do modelo">
+                        texto-ajuda="Informe o nome do modelo.">
                         <input type="text" class="form-control" id="novoNomeModelo" aria-describedby="novoNomeHelpModelo"
                             placeholder="Nome do modelo" v-model="nomeModelo">
                     </input-container>
-                    <!-- {{ nomeModelo }} -->
                 </div>
-
                 <div class="form-group">
                     <input-container titulo="Imagem" id="novoImagemModelo" id-help="novoImagemHelpModelo"
-                        texto-ajuda="Selecione uma imagem no formato PNG">
+                        texto-ajuda="Selecione uma imagem no formato PNG.">
                         <input type="file" class="form-control" id="novoImagemModelo" aria-describedby="novoImagemHelpModelo"
                             placeholder="Selecione uma imagem" @change="carregarImagem($event)">
                     </input-container>
-                    <!-- {{ arquivoImagem }} -->
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Número de portas" id="novoNumeroPortasModelo" id-help="novoNumeroPortasHelpModelo"
+                        texto-ajuda="Informe o número de portas que o carro tem (1 - 5).">
+                        <input type="text" class="form-control" id="novoNumeroPortasModelo" aria-describedby="novoNumeroPortasHelpModelo"
+                            placeholder="Número de portas" v-model="numero_portas">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Lugares" id="novoLugaresModelo" id-help="novoLugaresHelpModelo"
+                        texto-ajuda="Informe quantos lugares o carro tem (1 - 20).">
+                        <input type="text" class="form-control" id="novoLugaresModelo" aria-describedby="novoLugaresHelpModelo"
+                            placeholder="Lugares" v-model="lugares">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Air-Bag" id="novoAirBagModelo" id-help="novoAirBagHelpModelo"
+                        texto-ajuda="Informe se o carro possui air-bag (1 = Sim | 0 = Não)">
+                        <input type="text" class="form-control" id="novoAirBagModelo" aria-describedby="novoAirBagHelpModelo"
+                            placeholder="Air-bag" v-model="air_bag">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="ABS" id="novoABSModelo" id-help="novoABSHelpModelo"
+                        texto-ajuda="Informe se o carro possui freio ABS (1 = Sim | 0 = Não)">
+                        <input type="text" class="form-control" id="novoABSModelo" aria-describedby="novoABSHelpModelo"
+                            placeholder="ABS" v-model="abs">
+                    </input-container>
                 </div>
             </template>
 
@@ -119,13 +151,28 @@
                 <input-container titulo="ID">
                     <input type="text" class="form-control" :value="$store.state.item.id" disabled>
                 </input-container>
+                <input-container titulo="Marca ID">
+                    <input type="text" class="form-control" :value="$store.state.item.marca_id" disabled>
+                </input-container>
                 <input-container titulo="Nome do modelo">
                     <input type="text" class="form-control" :value="$store.state.item.nome" disabled>
                 </input-container>
                 <input-container titulo="Imagem">
                     <img :src="'storage/' + $store.state.item.imagem" v-if="$store.state.item.imagem">
                 </input-container>
-                <input-container titulo="Criação">
+                <input-container titulo="Número de portas">
+                    <input type="text" class="form-control" :value="$store.state.item.numero_portas" disabled>
+                </input-container>
+                <input-container titulo="Lugares">
+                    <input type="text" class="form-control" :value="$store.state.item.lugares" disabled>
+                </input-container>
+                <input-container titulo="Air-bag">
+                    <input type="text" class="form-control" :value="$store.state.item.air_bag" disabled>
+                </input-container>
+                <input-container titulo="ABS">
+                    <input type="text" class="form-control" :value="$store.state.item.abs" disabled>
+                </input-container>
+                <input-container titulo="Data de criação">
                     <input type="text" class="form-control" :value="$store.state.item.created_at" disabled>
                 </input-container>
             </template>
@@ -175,18 +222,53 @@
             </template>
             <template v-slot:conteudo v-if="$store.state.transacao.status != 'sucesso'">
                 <div class="form-group">
-                    <input-container titulo="Nome da marca" id="atualizarNome" id-help="atualizarNomeHelp"
-                        texto-ajuda="Informe o nome da marca">
-                        <input type="text" class="form-control" id="atualizarNome" aria-describedby="atualizarNomeHelp"
-                            placeholder="Nome da marca" v-model="$store.state.item.nome">
+                    <input-container titulo="Marca ID" id="atualizarMarcaIDModelo" id-help="atualizarMarcaIDModeloHelp"
+                        texto-ajuda="Informe o id da marca.">
+                        <input type="text" class="form-control" id="atualizarMarcaIDModelo" aria-describedby="atualizarMarcaIDModeloHelp"
+                            placeholder="Marca ID" v-model="$store.state.item.marca_id">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Imagem" id="atualizarImagem" id-help="atualizarImagemHelp"
+                    <input-container titulo="Nome do Modelo" id="atualizarNomeModelo" id-help="atualizarNomeModeloHelp"
+                        texto-ajuda="Informe o nome da marca">
+                        <input type="text" class="form-control" id="atualizarNomeModelo" aria-describedby="atualizarNomeModeloHelp"
+                            placeholder="Nome do modelo" v-model="$store.state.item.nome">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Imagem" id="atualizarImagemModelo" id-help="atualizarImagemModeloHelp"
                         texto-ajuda="Selecione uma imagem no formato PNG">
-                        <input type="file" class="form-control" id="atualizarImagem"
+                        <input type="file" class="form-control" id="atualizarImagemModelo"
                             aria-describedby="atualizarImagemHelp" placeholder="Selecione uma imagem"
                             @change="carregarImagem($event)">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Número de portas" id="atualizarNumeroPortasModelo" id-help="atualizarNumeroPortasHelpModelo"
+                        texto-ajuda="Informe o número de portas que o carro tem (1 - 5).">
+                        <input type="text" class="form-control" id="novoNumeroPortasModelo" aria-describedby="novoNumeroPortasHelpModelo"
+                            placeholder="Número de portas" v-model="numero_portas">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Lugares" id="atualizarLugaresModelo" id-help="atualizarLugaresHelpModelo"
+                        texto-ajuda="Informe quantos lugares o carro tem (1 - 20).">
+                        <input type="text" class="form-control" id="atualizarLugaresModelo" aria-describedby="atualizarLugaresHelpModelo"
+                            placeholder="Lugares" v-model="lugares">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Air-Bag" id="atualizarAirBagModelo" id-help="atualizarAirBagHelpModelo"
+                        texto-ajuda="Informe se o carro possui air-bag (1 = Sim | 0 = Não)">
+                        <input type="text" class="form-control" id="atualizarAirBagModelo" aria-describedby="atualizarAirBagHelpModelo"
+                            placeholder="Air-bag" v-model="air_bag">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="ABS" id="atualizarABSModelo" id-help="atualizarABSHelpModelo"
+                        texto-ajuda="Informe se o carro possui freio ABS (1 = Sim | 0 = Não)">
+                        <input type="text" class="form-control" id="atualizarABSModelo" aria-describedby="atualizarABSHelpModelo"
+                            placeholder="ABS" v-model="abs">
                     </input-container>
                 </div>
             </template>
@@ -211,8 +293,13 @@ export default {
             urlBase: 'http://localhost:8000/api/v1/modelo',
             urlPaginacao: '',
             urlFiltro: '',
+            marca_id: '',
             nomeModelo: '',
             arquivoImagem: [],
+            numero_portas: '',
+            lugares: '',
+            air_bag: '',
+            abs: '',
             transacaoStatus: '',
             transacaoDetalhes: {},
             modelos: { data: [] },
@@ -224,7 +311,12 @@ export default {
 
             let formData = new FormData();
             formData.append('_method', 'patch')
+            formData.append('marca_id', this.$store.state.item.marca_id)
             formData.append('nome', this.$store.state.item.nome)
+            formData.append('numero_portas', this.$store.state.item.numero_portas)
+            formData.append('lugares', this.$store.state.item.lugares)
+            formData.append('air_bag', this.$store.state.item.air_bag)
+            formData.append('abs', this.$store.state.item.abs)
             if (this.arquivoImagem[0]) {
                 formData.append('imagem', this.arquivoImagem[0])
             }
@@ -333,11 +425,16 @@ export default {
             this.arquivoImagem = e.target.files
         },
         salvar() {
-            console.log(this.nomeModelo, this.arquivoImagem[0])
+            console.log(this.nomeModelo, this.arquivoImagem[0], this.marca_id, this.numero_portas, this.lugares, this.air_bag, this.abs)
 
             let formData = new FormData();
             formData.append('nome', this.nomeModelo)
             formData.append('imagem', this.arquivoImagem[0])
+            formData.append('marca_id', this.marca_id)
+            formData.append('numero_portas', this.numero_portas)
+            formData.append('lugares', this.lugares)
+            formData.append('air_bag', this.air_bag)
+            formData.append('abs', this.abs)
 
             let config = {
                 headers: {

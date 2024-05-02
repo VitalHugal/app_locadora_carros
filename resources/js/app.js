@@ -10,7 +10,6 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import { createStore } from 'vuex';
-import ExampleComponent from './Components/ExampleComponent.vue';
 import Login from './Components/Login.vue';
 import Home from './Components/Home.vue';
 import Marcas from './Components/Marcas.vue';

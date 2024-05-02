@@ -86,7 +86,6 @@
                         <input type="text" class="form-control" id="novoNome" aria-describedby="novoNomeHelp"
                             placeholder="Nome da marca" v-model="nomeMarca">
                     </input-container>
-                    <!-- {{ nomeMarca }} -->
                 </div>
 
                 <div class="form-group">
@@ -95,7 +94,6 @@
                         <input type="file" class="form-control" id="novoImagem" aria-describedby="novoImagemHelp"
                             placeholder="Selecione uma imagem" @change="carregarImagem($event)">
                     </input-container>
-                    <!-- {{ arquivoImagem }} -->
                 </div>
             </template>
 

@@ -9,7 +9,7 @@
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
                                 <input-container titulo="ID" id="inputIdCliente" id-help="idHelpCliente"
-                                    texto-ajuda="Opcional. Inofrme o ID da Cliente.">
+                                    texto-ajuda="Opcional. Informe o ID da Cliente.">
                                     <input type="number" class="form-control" id="inputIdCliente" aria-describedby="idHelpCliente"
                                         placeholder="ID" v-model="busca.id">
                                 </input-container>
@@ -18,7 +18,8 @@
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
                                 <input-container titulo="Nome do cliente" id="inputNomeCliente" id-help="NomeHelpCliente"
-                                    texto-ajuda="Opcional. Inofrme o nome do cliente.">
+                                    texto-ajuda="Opcional. Informe o nome do cliente.">
+                                    
                                     <input type="text" class="form-control" id="inputNomeCliente" aria-describedby="nomeHelpCliente"
                                         placeholder="Nome do cliente" v-model="busca.nome">
                                 </input-container>
@@ -43,7 +44,6 @@
                             :titulos="{
                                 id: { titulo: 'ID', tipo: 'text' },
                                 nome: { titulo: 'Nome', tipo: 'text' },
-                                //imagem: { titulo: 'Imagem', tipo: 'imagem' },
                                 created_at: { titulo: 'Data de criação', tipo: 'data' },
                             }"></table-component>
                     </template>
