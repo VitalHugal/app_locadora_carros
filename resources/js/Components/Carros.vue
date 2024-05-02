@@ -16,11 +16,11 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
-                                <input-container titulo="Nome do carro" id="inputNomeCarro" id-help="NomeHelpCarro"
-                                    texto-ajuda="Opcional. Inofrme o nome do carro.">
-                                    <input type="text" class="form-control" id="inputNomeCarro"
-                                        aria-describedby="nomeHelpCarro" placeholder="Nome do carro"
-                                        v-model="busca.nome">
+                                <input-container titulo="Placa do carro" id="inputPlacaCarro" id-help="PlacaHelpCarro"
+                                    texto-ajuda="Opcional. Inofrme a placa do carro.">
+                                    <input type="text" class="form-control" id="inputPlacaCarro"
+                                        aria-describedby="PlacaHelpCarro" placeholder="Placa do carro"
+                                        v-model="busca.placa">
                                 </input-container>
                             </div>
                         </div>
@@ -33,13 +33,13 @@
                 <!-- fim card de busca -->
 
                 <!-- inicio do card listagem de carros -->
-                <card-component titulo="Relação de modelo">
+                <card-component titulo="Relação de carros">
                     <template v-slot:conteudo>
                         <!-- Componente que instaciamos -->
                         <table-component :dados="carros.data"
-                            :visualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalModeloVisualizar' }"
-                            :atualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalModeloAtualizar' }"
-                            :remover="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalModeloRemover' }"
+                            :visualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalCarroVisualizar' }"
+                            :atualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalCarroAtualizar' }"
+                            :remover="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalCarroRemover' }"
                             :titulos="{
                                 id: { titulo: 'ID', tipo: 'text' },
                                 modelo_id: { titulo: 'Modelo ID', tipo: 'text' },
@@ -72,12 +72,11 @@
 
         <!-- inicio do modal de inclusão de Carro -->
         <modal-component id="modalCarro" titulo="Adicionar carro">
-
             <template v-slot:alertas>
                 <alert-component tipo="success" :detalhes="transacaoDetalhes" titulo="Cadastro realizado com sucesso"
                     v-if="transacaoStatus == 'adicionado'"></alert-component>
-                <alert-component tipo="danger" :detalhes="transacaoDetalhes"
-                    titulo="Erro ao tentar cadastrar um novo modelo" v-if="transacaoStatus == 'erro'"></alert-component>
+                <alert-component tipo="danger" :detalhes="transacaoDetalhes" titulo="Erro ao tentar cadastrar a marca"
+                    v-if="transacaoStatus == 'erro'"></alert-component>
             </template>
 
             <template v-slot:conteudo>
@@ -85,28 +84,28 @@
                     <input-container titulo="Modelo ID" id="novoModeloIDCarro" id-help="novoModeloIDHelpCarro"
                         texto-ajuda="Informe o id do modelo.">
                         <input type="text" class="form-control" id="novoModeloIDCarro"
-                            aria-describedby="novoModeloIDHelpCarro" placeholder="Modelo ID" v-model="$store.state.item.modelo_id">
+                            aria-describedby="novoModeloIDHelpCarro" placeholder="Modelo ID" v-model="modelo_id">
                     </input-container>
                 </div>
                 <div class="form-group">
                     <input-container titulo="Placa" id="novoPlacaCarro" id-help="novoPalcaHelpCarro"
                         texto-ajuda="Informe a placa do carro.">
                         <input type="text" class="form-control" id="novoPlacaCarro"
-                            aria-describedby="novoPlacaHelpCarro" placeholder="Placa" v-model="$store.state.item.placa">
+                            aria-describedby="novoPlacaHelpCarro" placeholder="Placa" v-model="placa">
                     </input-container>
                 </div>
                 <div class="form-group">
                     <input-container titulo="Disponível" id="novoDisponivelCarro" id-help="novoDisponivelHelpCarro"
                         texto-ajuda="Informe a disponibilidade do carro.">
                         <input type="text" class="form-control" id="novoDisponivelCarro"
-                            aria-describedby="novoDisponivelHelpCarro" placeholder="Disponível" v-model="$store.state.item.disponivel">
+                            aria-describedby="novoDisponivelHelpCarro" placeholder="Disponível" v-model="disponivel">
                     </input-container>
                 </div>
                 <div class="form-group">
                     <input-container titulo="KM Rodados" id="novoKMCarro" id-help="novoKMHelpCarro"
                         texto-ajuda="Informe quantos KM rodados o carro possui.">
                         <input type="text" class="form-control" id="novoKMCarro" aria-describedby="novoKMHelpCarro"
-                            placeholder="Lugares" v-model="$store.state.item.km">
+                            placeholder="Lugares" v-model="km">
                     </input-container>
                 </div>
             </template>
@@ -132,7 +131,7 @@
                 <input-container titulo="Placa">
                     <input type="text" class="form-control" :value="$store.state.item.placa" disabled>
                 </input-container>
-                <input-container titulo="Disponível">
+                <input-container titulo="Disponivel">
                     <input type="text" class="form-control" :value="$store.state.item.disponivel" disabled>
                 </input-container>
                 <input-container titulo="KM Rodados">
@@ -164,6 +163,15 @@
                 </input-container>
                 <input-container titulo="Modelo ID">
                     <input type="text" class="form-control" :value="$store.state.item.modelo_id" disabled>
+                </input-container>
+                <input-container titulo="Placa">
+                    <input type="text" class="form-control" :value="$store.state.item.placa" disabled>
+                </input-container>
+                <input-container titulo="Disponível">
+                    <input type="text" class="form-control" :value="$store.state.item.disponivel" disabled>
+                </input-container>
+                <input-container titulo="KM Rodados">
+                    <input type="text" class="form-control" :value="$store.state.item.km" disabled>
                 </input-container>
             </template>
             <template v-slot:rodape>
@@ -243,7 +251,7 @@ export default {
             transacaoStatus: '',
             transacaoDetalhes: {},
             carros: { data: [] },
-            busca: { id: '', nome: '' },
+            busca: { id: '', placa: '' },
         }
     },
     methods: {
@@ -347,6 +355,7 @@ export default {
             console.log(this.modelo_id, this.placa, this.disponivel, this.km)
 
             let formData = new FormData();
+            
             formData.append('modelo_id', this.modelo_id)
             formData.append('placa', this.placa)
             formData.append('disponivel', this.disponivel)

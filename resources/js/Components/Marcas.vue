@@ -71,14 +71,13 @@
 
         <!-- inicio do modal de inclusão de marca -->
         <modal-component id="modalMarca" titulo="Adicionar marca">
-
             <template v-slot:alertas>
                 <alert-component tipo="success" :detalhes="transacaoDetalhes" titulo="Cadastro realizado com sucesso"
                     v-if="transacaoStatus == 'adicionado'"></alert-component>
                 <alert-component tipo="danger" :detalhes="transacaoDetalhes" titulo="Erro ao tentar cadastrar a marca"
                     v-if="transacaoStatus == 'erro'"></alert-component>
             </template>
-
+            
             <template v-slot:conteudo>
                 <div class="form-group">
                     <input-container titulo="Nome da marca" id="novoNome" id-help="novoNomeHelp"
