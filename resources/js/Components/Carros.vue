@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <!-- inicio card de busca modelos -->
+                <!-- inicio card de busca carro -->
                 <card-component titulo="Busca de carros">
                     <template v-slot:conteudo>
                         <div class="row">
@@ -16,10 +16,10 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
-                                <input-container titulo="Placa do carro" id="inputPlacaCarro" id-help="PlacaHelpCarro"
+                                <input-container titulo="Placa do carro" id="inputPlacaCarro" id-help="placaHelpCarro"
                                     texto-ajuda="Opcional. Inofrme a placa do carro.">
                                     <input type="text" class="form-control" id="inputPlacaCarro"
-                                        aria-describedby="PlacaHelpCarro" placeholder="Placa do carro"
+                                        aria-describedby="placaHelpCarro" placeholder="Placa do carro"
                                         v-model="busca.placa">
                                 </input-container>
                             </div>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col ">
                                 <button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal"
-                                    data-bs-target="#modalModelo">Adicionar</button>
+                                    data-bs-target="#modalCarro">Adicionar</button>
                             </div>
                         </div>
                     </template>
@@ -88,7 +88,7 @@
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Placa" id="novoPlacaCarro" id-help="novoPalcaHelpCarro"
+                    <input-container titulo="Placa" id="novoPlacaCarro" id-help="novoPlacaHelpCarro"
                         texto-ajuda="Informe a placa do carro.">
                         <input type="text" class="form-control" id="novoPlacaCarro"
                             aria-describedby="novoPlacaHelpCarro" placeholder="Placa" v-model="placa">
@@ -115,10 +115,10 @@
                 <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
-        <!-- fim do modal de inclusão de modelo -->
+        <!-- fim do modal de inclusão de Carro -->
 
-        <!-- inicio do modal de visualização de modelo -->
-        <modal-component id="modalModeloVisualizar" titulo="Visualizar modelo">
+        <!-- inicio do modal de visualização de carro -->
+        <modal-component id="modalCarroVisualizar" titulo="Visualizar modelo">
             <template v-slot:alertas>
             </template>
             <template v-slot:conteudo>
@@ -355,7 +355,7 @@ export default {
             console.log(this.modelo_id, this.placa, this.disponivel, this.km)
 
             let formData = new FormData();
-            
+
             formData.append('modelo_id', this.modelo_id)
             formData.append('placa', this.placa)
             formData.append('disponivel', this.disponivel)
