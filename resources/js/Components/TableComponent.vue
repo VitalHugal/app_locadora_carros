@@ -4,11 +4,8 @@
             <thead>
                 <tr>
                     <th scope="col" v-for="t, key in titulos" :key="key">{{ t.titulo }}</th>
-                    <th v-if="visualizar.visivel || atualizar.visivel || remover.visivel">
-
-                    </th>
+                    <th v-if="visualizar.visivel || atualizar.visivel || remover.visivel"></th>
                 </tr>
-
             </thead>
             <tbody>
                 <tr v-for="obj, chave in dadosFiltrados" :key="chave">
@@ -51,18 +48,23 @@ export default {
     },
     computed: {
         dadosFiltrados() {
-            let campos = Object.keys(this.titulos)
-            let dadosFiltrados = []
+    if (!this.dados) {
+        return []
+    }
 
-            this.dados.map((item, chave) => {
-                let itemFiltrado = {}
-                campos.forEach(campo => {
-                    itemFiltrado[campo] = item[campo]
-                })
-                dadosFiltrados.push(itemFiltrado)
-            })
-            return dadosFiltrados
-        }
+    let campos = Object.keys(this.titulos)
+    let dadosFiltrados = []
+
+    this.dados.map((item, chave) => {
+        let itemFiltrado = {}
+        campos.forEach(campo => {
+            itemFiltrado[campo] = item[campo]
+        })
+        dadosFiltrados.push(itemFiltrado)
+    })
+    return dadosFiltrados
+}
+
     }
 }
 </script>
