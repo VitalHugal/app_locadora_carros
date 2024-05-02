@@ -197,8 +197,14 @@
                 <input-container titulo="ID">
                     <input type="text" class="form-control" :value="$store.state.item.id" disabled>
                 </input-container>
-                <input-container titulo="Nome da Modelo">
+                <input-container titulo="Marca ID">
+                    <input type="text" class="form-control" :value="$store.state.item.marca_id" disabled>
+                </input-container>
+                <input-container titulo="Nome do modelo">
                     <input type="text" class="form-control" :value="$store.state.item.nome" disabled>
+                </input-container>
+                <input-container titulo="Data de criação">
+                    <input type="text" class="form-control" :value="$store.state.item.created_at" disabled>
                 </input-container>
             </template>
             <template v-slot:rodape>
