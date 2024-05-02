@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Abr-2024 às 18:34
+-- Tempo de geração: 02-Maio-2024 às 18:09
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -46,6 +46,7 @@ INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
 ('b0K69o7SXHTed3f0', 's:7:\"forever\";', 2029867127),
 ('fpYaoMjgUkiALOCu', 's:7:\"forever\";', 2029867225),
 ('gm9K5Cjp7fVhgkGb', 's:7:\"forever\";', 2029867814),
+('Pbqo2TqA9v033Fbu', 's:7:\"forever\";', 2030037956),
 ('PpD94rjPzRSJ4YJ5', 's:7:\"forever\";', 2029870527),
 ('qzCkVTZmt14t0Ecc', 's:7:\"forever\";', 2029860536),
 ('RLQxMGn2L7vLDPBJ', 's:7:\"forever\";', 2029868079),
@@ -80,6 +81,16 @@ CREATE TABLE `carros` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Extraindo dados da tabela `carros`
+--
+
+INSERT INTO `carros` (`id`, `modelo_id`, `placa`, `disponivel`, `km`, `created_at`, `updated_at`) VALUES
+(5, 8, 'EFG5678', 1, 3000, '2024-05-02 19:13:10', '2024-05-02 20:33:58'),
+(7, 12, 'VHJ2505', 1, 159780, '2024-05-02 20:32:15', '2024-05-02 20:32:15'),
+(8, 9, 'ASS3000', 0, 300320, '2024-05-02 20:32:40', '2024-05-02 20:33:34'),
+(9, 9, 'GBA1608', 0, 195875, '2024-05-02 20:33:18', '2024-05-02 20:33:18');
+
 -- --------------------------------------------------------
 
 --
@@ -98,8 +109,11 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `created_at`, `updated_at`) VALUES
-(2, 'Arianne Soares Da SIlva', '2024-04-22 22:28:15', '2024-04-22 22:28:15'),
-(3, 'José Carlos', '2024-04-30 21:33:07', '2024-04-30 21:33:07');
+(5, 'Lucas Silva', '2024-05-02 14:08:08', '2024-05-02 17:51:00'),
+(7, 'Arianne Soares', '2024-05-02 17:24:35', '2024-05-02 17:24:35'),
+(9, 'Pablo Vitar', '2024-05-02 17:53:51', '2024-05-02 17:53:51'),
+(10, 'Messi Ronaldo', '2024-05-02 17:54:40', '2024-05-02 17:54:40'),
+(11, 'Cristiano Messi', '2024-05-02 17:54:52', '2024-05-02 17:54:52');
 
 -- --------------------------------------------------------
 
@@ -191,13 +205,13 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id`, `nome`, `imagem`, `created_at`, `updated_at`) VALUES
-(29, 'BMW', 'imagens/KZYdAn923lzyw3srUfzLMGG0Scqc5sRbX9IaTxaX.png', '2024-04-26 21:39:09', '2024-04-30 00:18:01'),
+(29, 'BMW', 'imagens/KZYdAn923lzyw3srUfzLMGG0Scqc5sRbX9IaTxaX.png', '2024-04-26 21:39:09', '2024-05-02 17:56:48'),
 (30, 'volksvagem', 'imagens/ev2qw5awvjRckYsujNoHMlxdyJGxfEKGF7TEQCsg.png', '2024-04-26 21:39:51', '2024-04-29 23:52:49'),
-(32, 'Honda', 'imagens/HGGevYjsPcZDqDvhLqtlU8yzy0jdaZc3DrjNyCAr.png', '2024-04-30 16:34:45', '2024-04-30 17:33:57'),
 (33, 'Kia', 'imagens/rrNipt5XFQXNhABuq86SsRGWybYccpf9YRQVmwHs.png', '2024-04-30 16:39:10', '2024-04-30 16:39:10'),
-(34, 'Nissan', 'imagens/wzU97fsLk6N2O1f1vfFA584CN8DXigNbVgwyOGXe.png', '2024-04-30 13:44:32', '2024-04-30 13:44:32'),
-(36, 'Hyundai', 'imagens/plw4bLjTT3yq8imz5IV0ha0DNLNz9BQOcneBOYvm.png', '2024-04-30 14:04:41', '2024-04-30 14:04:41'),
-(37, 'Toyota', 'imagens/Os9tzwRCflHhR8jad4XUaakuntHbRNR5Izm3ZNcV.png', '2024-04-30 14:13:16', '2024-04-30 14:13:16');
+(46, 'Honda', 'imagens/hpeQFyuSgisVtD63l3AR4W8kFGlxqtg61X7J1ffG.png', '2024-05-02 14:20:09', '2024-05-02 14:20:09'),
+(47, 'Nissan', 'imagens/rAKvUuOroHVp759kawUkKRZvl6XI3XrxNmRaEXDI.png', '2024-05-02 17:55:35', '2024-05-02 17:55:35'),
+(48, 'Hyundai', 'imagens/sMhGm28cTUTt57UsLI7wVJLxSIAyk0UT5NvuQppx.png', '2024-05-02 18:06:22', '2024-05-02 18:06:22'),
+(49, 'Ford', 'imagens/60UgGbnD9lshg7y3Su9Q377WcHRmo5ZHc9lqqv8F.png', '2024-05-02 18:43:47', '2024-05-02 18:43:47');
 
 -- --------------------------------------------------------
 
@@ -245,6 +259,17 @@ CREATE TABLE `modelos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `modelos`
+--
+
+INSERT INTO `modelos` (`id`, `marca_id`, `nome`, `imagem`, `numero_portas`, `lugares`, `air_bag`, `abs`, `created_at`, `updated_at`) VALUES
+(7, 30, 'GOL 1.0', 'imagens/modelos/iH9CUf8bSQLYkuqvRXEnicGm6ZCEH9qlcwZmBw6q.png', 4, 5, 1, 1, '2024-05-02 18:07:22', '2024-05-02 18:07:22'),
+(8, 48, 'HB20', 'imagens/modelos/DqCN0tLmP2JTEHpJBCOV8SYg0IYMqfjuGaoZ4Gbq.png', 2, 5, 1, 0, '2024-05-02 18:08:58', '2024-05-02 18:08:58'),
+(9, 48, 'HB20 - Sedan', 'imagens/modelos/mHyB4YIeUn5BaGDIzddB7xEKApZPOpYwZ9xaA0Vi.png', 4, 5, 1, 1, '2024-05-02 18:42:05', '2024-05-02 18:42:05'),
+(10, 30, 'Polo 1.0', 'imagens/modelos/u79lvGKt8OWsTouDd7zWZvez27C4riGY8Oiiqrhr.png', 4, 5, 0, 0, '2024-05-02 18:43:05', '2024-05-02 18:43:05'),
+(12, 49, 'Ford ka 1.0 Sedan', 'imagens/modelos/5BpR0lOjiVwAHYIfNWywxobtvDAFowEHAXX5viQB.png', 4, 5, 0, 0, '2024-05-02 18:44:48', '2024-05-02 18:44:48');
 
 -- --------------------------------------------------------
 
@@ -297,7 +322,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('84axGw7DZs730xISIrHbr6v08Gt1ekqifYSjJ2cJ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidUNJWnhEWnlGVFpHWnRpbnNSR3d2eGtxdldXcVluTXE1RVJMcFEzTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbGllbnRlcyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzE0NTEyNzE1O319', 1714512766);
+('8alIeYMiYuU9uwNoMIwF4k4Z0zX7PNS5tuRcWrx6', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYVR4a0pybWRCcVQ5ZDdTRnZlaXBvNmVHRWRPYlNHM2NYcTBWc053MSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2NhY2FvIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTQ2Nzk4NTU7fX0=', 1714683888);
 
 -- --------------------------------------------------------
 
@@ -443,13 +468,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `carros`
 --
 ALTER TABLE `carros`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `failed_jobs`
@@ -473,7 +498,7 @@ ALTER TABLE `locacoes`
 -- AUTO_INCREMENT de tabela `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -485,7 +510,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de tabela `modelos`
 --
 ALTER TABLE `modelos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `personal_access_tokens`
