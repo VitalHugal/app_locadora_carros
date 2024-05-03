@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Maio-2024 às 18:09
+-- Tempo de geração: 03-Maio-2024 às 14:29
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -46,6 +46,7 @@ INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
 ('b0K69o7SXHTed3f0', 's:7:\"forever\";', 2029867127),
 ('fpYaoMjgUkiALOCu', 's:7:\"forever\";', 2029867225),
 ('gm9K5Cjp7fVhgkGb', 's:7:\"forever\";', 2029867814),
+('o5LjpcXsOoOSYSz8', 's:7:\"forever\";', 2030115445),
 ('Pbqo2TqA9v033Fbu', 's:7:\"forever\";', 2030037956),
 ('PpD94rjPzRSJ4YJ5', 's:7:\"forever\";', 2029870527),
 ('qzCkVTZmt14t0Ecc', 's:7:\"forever\";', 2029860536),
@@ -186,6 +187,16 @@ CREATE TABLE `locacoes` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Extraindo dados da tabela `locacoes`
+--
+
+INSERT INTO `locacoes` (`id`, `cliente_id`, `carro_id`, `data_inicio_periodo`, `data_final_previsto_periodo`, `data_final_realizado_periodo`, `valor_diaria`, `km_inicial`, `km_final`, `created_at`, `updated_at`) VALUES
+(2, 7, 5, '2024-05-05 00:00:00', '2024-05-06 00:00:00', '2024-05-06 00:00:00', 199.9, 3000, 3150, '2024-05-03 14:46:57', '2024-05-03 14:46:57'),
+(3, 11, 5, '2024-05-05 00:00:00', '2024-05-08 00:00:00', '2024-05-12 00:00:00', 199.9, 3500, 4123, '2024-05-03 14:48:08', '2024-05-03 14:48:08'),
+(4, 9, 8, '2024-05-20 00:00:00', '2024-05-22 00:00:00', '2024-05-29 00:00:00', 280, 5000, 6000, '2024-05-03 15:14:12', '2024-05-03 15:14:12'),
+(5, 10, 8, '2024-06-24 00:00:00', '2024-06-25 00:00:00', '2024-05-25 00:00:00', 180, 6570, 6987, '2024-05-03 15:15:11', '2024-05-03 15:15:11');
+
 -- --------------------------------------------------------
 
 --
@@ -322,7 +333,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('8alIeYMiYuU9uwNoMIwF4k4Z0zX7PNS5tuRcWrx6', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYVR4a0pybWRCcVQ5ZDdTRnZlaXBvNmVHRWRPYlNHM2NYcTBWc053MSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2NhY2FvIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTQ2Nzk4NTU7fX0=', 1714683888);
+('rvizynVRRhGQJJkkgcJunDh6Mz7nVy1L1SHN0UBW', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibTlCeW1rOTk4NFF0VTJQZlBjSVlITXFMR1k2c014NG1rd1BGOWRvVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1714756955);
 
 -- --------------------------------------------------------
 
@@ -492,7 +503,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT de tabela `locacoes`
 --
 ALTER TABLE `locacoes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
