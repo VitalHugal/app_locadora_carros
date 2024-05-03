@@ -32,8 +32,8 @@
                 </card-component>
                 <!-- fim card de busca -->
 
-                <!-- inicio do card listagem de carros -->
-                <card-component titulo="Relação de carros">
+                <!-- inicio do card listagem de carro -->
+                <card-component titulo="Relação de carro">
                     <template v-slot:conteudo>
                         <!-- Componente que instaciamos -->
                         <table-component :dados="carros.data"
@@ -345,7 +345,7 @@ export default {
             axios.get(url)
                 .then(response => {
                     this.carros = response.data
-                    //console.log(this.carros)
+                    
                 })
                 .catch(errors => {
                     console.log(errors)

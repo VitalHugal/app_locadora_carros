@@ -37,8 +37,8 @@
                                 cliente_id: { titulo: 'Cliente ID', tipo: 'text' },
                                 carro_id: { titulo: 'Carro ID', tipo: 'text' },
                                 data_inicio_periodo: { titulo: 'Data inicio da Locação', tipo: 'text' },
-                                data_final_previsto_periodo: { titulo: 'Data final da Locação (Previsão)', tipo: 'data' },
-                                data_final_realizado_periodo: { titulo: 'Data final da Locação (Final)', tipo: 'data' },
+                                data_final_previsto_periodo: { titulo: 'Data final da Locação (Previsão)', tipo: 'text' },
+                                data_final_realizado_periodo: { titulo: 'Data final da Locação (Final)', tipo: 'text' },
                                 valor_diaria: { titulo: 'Valor diária', tipo: 'text' },
                                 km_inicial: { titulo: 'KM inicial', tipo: 'text' },
                                 km_final: { titulo: 'KM final', tipo: 'text' },
@@ -68,7 +68,7 @@
         </div>
 
         <!-- inicio do modal de inclusão de locacao -->
-        <modal-component id="modalCliente" titulo="Adicionar cliente">
+        <modal-component id="modalLocacao" titulo="Adicionar locação">
 
             <template v-slot:alertas>
                 <alert-component tipo="success" :detalhes="transacaoDetalhes" titulo="Cadastro realizado com sucesso"
@@ -101,10 +101,10 @@
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Data final da Locação (Previsão)" id="novoDataFinalLocacao"
-                        id-help="novoDataFinalHelpLocacao" texto-ajuda="Informe a data final da locação.">
-                        <input type="text" class="form-control" id="novoDataFinalLocacao"
-                            aria-describedby="novoDataFinalHelpLocacao" placeholder="Data final da Locação"
+                    <input-container titulo="Data final da Locação (Previsão)" id="novoDataFinalPrevisaoLocacao"
+                        id-help="novoDataFinalPrevisaoHelpLocacao" texto-ajuda="Informe a data final da locação.">
+                        <input type="text" class="form-control" id="novoDataFinalPrevisaoLocacao"
+                            aria-describedby="novoDataFinalPrevisaoHelpLocacao" placeholder="Data final da Locação"
                             v-model="data_final_previsto_periodo">
                     </input-container>
                 </div>
@@ -113,7 +113,7 @@
                         id-help="novoDataFinalFinalHelpLocacao" texto-ajuda="Informe a data final da locação.">
                         <input type="text" class="form-control" id="novoDataFinalFinalLocacao"
                             aria-describedby="novoDataFinalFinalHelpLocacao" placeholder="Data final da Locação"
-                            v-model="data_final_previsto_periodo">
+                            v-model="data_final_realizado_periodo">
                     </input-container>
                 </div>
                 <div class="form-group">
@@ -136,7 +136,7 @@
                         id-help="novoKMFinalHelpLocacao" texto-ajuda="KM Inicial">
                         <input type="text" class="form-control" id="novoKMFinalLocacao"
                             aria-describedby="novoKMFinalHelpLocacao" placeholder="KM Inicial"
-                            v-model="km_inicial">
+                            v-model="km_final">
                     </input-container>
                 </div>
             </template>
@@ -148,7 +148,7 @@
         <!-- fim do modal de inclusão de locacao -->
 
         <!-- inicio do modal de visualização de locacao -->
-        <modal-component id="modalClienteVisualizar" titulo="Visualizar cliente">
+        <modal-component id="modalLocacaoVisualizar" titulo="Visualizar locações">
             <template v-slot:alertas>
             </template>
             <template v-slot:conteudo>
@@ -221,7 +221,7 @@
         <!-- fim do modal de remoção de clientes -->
 
         <!-- inicio do modal de atualização de clientes -->
-        <modal-component id="modalClienteAtualizar" titulo="Atualizar cliente">
+        <modal-component id="modalLocacaoAtualizar" titulo="Atualizar locação">
             <template v-slot:alertas>
                 <alert-component tipo="success" titulo="Transação realizada com sucesso."
                     :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'sucesso'">
