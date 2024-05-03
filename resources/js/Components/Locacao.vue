@@ -6,12 +6,12 @@
                 <card-component titulo="Busca de locações">
                     <template v-slot:conteudo>
                         <div class="row">
-                            <div class="col-md-6 mb-3" >
+                            <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
                                 <input-container titulo="ID" id="inputIdLocacao" id-help="idHelpLocacao"
                                     texto-ajuda="Opcional. Informe o ID da Locacão.">
-                                    <input type="number" class="form-control" id="inputIdLocacao" aria-describedby="idHelpLocacao"
-                                        placeholder="ID" v-model="busca.id">
+                                    <input type="number" class="form-control" id="inputIdLocacao"
+                                        aria-describedby="idHelpLocacao" placeholder="ID" v-model="busca.id">
                                 </input-container>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -28,7 +28,7 @@
                 <card-component titulo="Relação de locações">
                     <template v-slot:conteudo>
                         <!-- Componente que instaciamos -->
-                        <table-component :dados="locacoes.data" 
+                        <table-component :dados="locacoes.data"
                             :visualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalLocacaoVisualizar' }"
                             :atualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalLocacaoAtualizar' }"
                             :remover="{ visivel: true, dataToggle: 'modal', dataTarget: '#modalLocacaoRemover' }"
@@ -81,43 +81,62 @@
                 <div class="form-group">
                     <input-container titulo="Cliente ID" id="novoClienteIDLocacao" id-help="novoClienteIDHelpLocacao"
                         texto-ajuda="Informe o id do cliente.">
-                        <input type="text" class="form-control" id="novoClienteIDLocacao" aria-describedby="novoClienteIDHelpLocacao"
-                            placeholder="Cliente ID" v-model="cliente_id">
+                        <input type="text" class="form-control" id="novoClienteIDLocacao"
+                            aria-describedby="novoClienteIDHelpLocacao" placeholder="Cliente ID" v-model="cliente_id">
                     </input-container>
                 </div>
                 <div class="form-group">
                     <input-container titulo="Carro ID" id="novoCarroIDLocacao" id-help="novoCarroIDHelpLocacao"
                         texto-ajuda="Informe o id do carro.">
-                        <input type="text" class="form-control" id="novoCarroIDLocacao" aria-describedby="novoCarroIDHelpLocacao"
-                            placeholder="Carro ID" v-model="carro_id">
+                        <input type="text" class="form-control" id="novoCarroIDLocacao"
+                            aria-describedby="novoCarroIDHelpLocacao" placeholder="Carro ID" v-model="carro_id">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Data inicio da Locação" id="novoDataInicioLocacao" id-help="novoDataInicioHelpLocacao"
-                        texto-ajuda="Informe a data de inicio da locação.">
-                        <input type="text" class="form-control" id="novoDataInicioLocacao" aria-describedby="novoDataInicioHelpLocacao"
-                            placeholder="Data inicio da Locação" v-model="data_inicio_periodo">
+                    <input-container titulo="Data inicio da Locação" id="novoDataInicioLocacao"
+                        id-help="novoDataInicioHelpLocacao" texto-ajuda="Informe a data de inicio da locação.">
+                        <input type="text" class="form-control" id="novoDataInicioLocacao"
+                            aria-describedby="novoDataInicioHelpLocacao" placeholder="Data inicio da Locação"
+                            v-model="data_inicio_periodo">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Data final da Locação (Previsão)" id="novoDataFinalLocacao" id-help="novoDataFinalHelpLocacao"
-                        texto-ajuda="Informe a data final da locação.">
-                        <input type="text" class="form-control" id="novoDataFinalLocacao" aria-describedby="novoDataFinalHelpLocacao"
-                            placeholder="Data final da Locação" v-model="data_final_previsto_periodo">
+                    <input-container titulo="Data final da Locação (Previsão)" id="novoDataFinalLocacao"
+                        id-help="novoDataFinalHelpLocacao" texto-ajuda="Informe a data final da locação.">
+                        <input type="text" class="form-control" id="novoDataFinalLocacao"
+                            aria-describedby="novoDataFinalHelpLocacao" placeholder="Data final da Locação"
+                            v-model="data_final_previsto_periodo">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Valor diária" id="novoValorDiariaLocacao" id-help="novoValorDiariaHelpLocacao"
-                        texto-ajuda="Valor diária">
-                        <input type="text" class="form-control" id="novoValorDiariaLocacao" aria-describedby="novoValorDiariaHelpLocacao"
-                            placeholder="Valor diária" v-model="valor_diaria">
+                    <input-container titulo="Data final da Locação (Final)" id="novoDataFinalFinalLocacao"
+                        id-help="novoDataFinalFinalHelpLocacao" texto-ajuda="Informe a data final da locação.">
+                        <input type="text" class="form-control" id="novoDataFinalFinalLocacao"
+                            aria-describedby="novoDataFinalFinalHelpLocacao" placeholder="Data final da Locação"
+                            v-model="data_final_previsto_periodo">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="Valor diária" id="novoValorDiariaLocacao"
+                        id-help="novoValorDiariaHelpLocacao" texto-ajuda="Valor diária">
+                        <input type="text" class="form-control" id="novoValorDiariaLocacao"
+                            aria-describedby="novoValorDiariaHelpLocacao" placeholder="Valor diária"
+                            v-model="valor_diaria">
                     </input-container>
                 </div>
                 <div class="form-group">
                     <input-container titulo="KM Inicial" id="novoKMInicialLocacao" id-help="novoKMInicialHelpLocacao"
                         texto-ajuda="KM Inicial">
-                        <input type="text" class="form-control" id="novoKMInicialLocacao" aria-describedby="novoKMInicialHelpLocacao"
-                            placeholder="KM Inicial" v-model="km_inicial">
+                        <input type="text" class="form-control" id="novoKMInicialLocacao"
+                            aria-describedby="novoKMInicialHelpLocacao" placeholder="KM Inicial" v-model="km_inicial">
+                    </input-container>
+                </div>
+                <div class="form-group">
+                    <input-container titulo="KM Final" id="novoKMFinalLocacao"
+                        id-help="novoKMFinalHelpLocacao" texto-ajuda="KM Inicial">
+                        <input type="text" class="form-control" id="novoKMFinalLocacao"
+                            aria-describedby="novoKMFinalHelpLocacao" placeholder="KM Inicial"
+                            v-model="km_inicial">
                     </input-container>
                 </div>
             </template>
@@ -146,10 +165,12 @@
                     <input type="text" class="form-control" :value="$store.state.item.data_inicio_periodo" disabled>
                 </input-container>
                 <input-container titulo="Data final da Locação (Previsão)">
-                    <input type="text" class="form-control" :value="$store.state.item.data_final_previsto_periodo" disabled>
+                    <input type="text" class="form-control" :value="$store.state.item.data_final_previsto_periodo"
+                        disabled>
                 </input-container>
                 <input-container titulo="Data final da Locação (Final)">
-                    <input type="text" class="form-control" :value="$store.state.item.data_final_realizado_periodo" disabled>
+                    <input type="text" class="form-control" :value="$store.state.item.data_final_realizado_periodo"
+                        disabled>
                 </input-container>
                 <input-container titulo="Valor Diária">
                     <input type="text" class="form-control" :value="$store.state.item.valor_diaria" disabled>
@@ -174,8 +195,7 @@
         <modal-component id="modalLocacaoRemover" titulo="Remover Locação">
             <template v-slot:alertas>
                 <alert-component tipo="success" titulo="Transação realizada com sucesso."
-                    :detalhes="$store.state.transacao"
-                    v-if="$store.state.transacao.status == 'sucesso'">
+                    :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'sucesso'">
                 </alert-component>
                 <alert-component tipo="danger" titulo="Erro na transação." :detalhes="$store.state.transacao"
                     v-if="$store.state.transacao.status == 'erro'">
@@ -204,8 +224,7 @@
         <modal-component id="modalClienteAtualizar" titulo="Atualizar cliente">
             <template v-slot:alertas>
                 <alert-component tipo="success" titulo="Transação realizada com sucesso."
-                    :detalhes="$store.state.transacao"
-                    v-if="$store.state.transacao.status == 'sucesso'">
+                    :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'sucesso'">
                 </alert-component>
                 <alert-component tipo="danger" titulo="Erro na transação." :detalhes="$store.state.transacao"
                     v-if="$store.state.transacao.status == 'erro'">
@@ -213,59 +232,66 @@
             </template>
             <template v-slot:conteudo v-if="$store.state.transacao.status != 'sucesso'">
                 <div class="form-group">
-                    <input-container titulo="Cliente ID" id="atualizarClienteIDLocacao" id-help="atualizarClienteIDHelpLocacao"
-                        texto-ajuda="Informe o id do cliente.">
-                        <input type="text" class="form-control" id="atualizarClienteIDLocacao" aria-describedby="atualizarClienteIDHelpLocacao"
-                            placeholder="Cliente ID" v-model="cliente_id">
+                    <input-container titulo="Cliente ID" id="atualizarClienteIDLocacao"
+                        id-help="atualizarClienteIDHelpLocacao" texto-ajuda="Informe o id do cliente.">
+                        <input type="text" class="form-control" id="atualizarClienteIDLocacao"
+                            aria-describedby="atualizarClienteIDHelpLocacao" placeholder="Cliente ID"
+                            v-model="cliente_id">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Carro ID" id="atualizarCarroIDLocacao" id-help="atualizarCarroIDHelpLocacao"
-                        texto-ajuda="Informe o id do carro.">
-                        <input type="text" class="form-control" id="atualizarCarroIDLocacao" aria-describedby="atualizarCarroIDHelpLocacao"
-                            placeholder="Carro ID" v-model="carro_id">
+                    <input-container titulo="Carro ID" id="atualizarCarroIDLocacao"
+                        id-help="atualizarCarroIDHelpLocacao" texto-ajuda="Informe o id do carro.">
+                        <input type="text" class="form-control" id="atualizarCarroIDLocacao"
+                            aria-describedby="atualizarCarroIDHelpLocacao" placeholder="Carro ID" v-model="carro_id">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Data inicio da Locação" id="novoDataInicioLocacao" id-help="novoDataInicioHelpLocacao"
-                        texto-ajuda="Informe a data de inicio da locação.">
-                        <input type="text" class="form-control" id="novoDataInicioLocacao" aria-describedby="novoDataInicioHelpLocacao"
-                            placeholder="Data inicio da Locação" v-model="data_inicio_periodo">
+                    <input-container titulo="Data inicio da Locação" id="atualizarDataInicioLocacao"
+                        id-help="atualizarDataInicioHelpLocacao" texto-ajuda="Informe a data de inicio da locação.">
+                        <input type="text" class="form-control" id="atualizarDataInicioLocacao"
+                            aria-describedby="atualizarDataInicioHelpLocacao" placeholder="Data inicio da Locação"
+                            v-model="data_inicio_periodo">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Data final da Locação (Previsão)" id="novoDataFinalLocacao" id-help="novoDataFinalHelpLocacao"
-                        texto-ajuda="Informe a data final da locação.">
-                        <input type="text" class="form-control" id="novoDataFinalLocacao" aria-describedby="novoDataFinalHelpLocacao"
-                            placeholder="Data final da Locação" v-model="data_final_previsto_periodo">
+                    <input-container titulo="Data final da Locação (Previsão)" id="atualizarDataFinalLocacao"
+                        id-help="atualizarDataFinalHelpLocacao" texto-ajuda="Informe a data final da locação.">
+                        <input type="text" class="form-control" id="atualizarDataFinalLocacao"
+                            aria-describedby="atualizarDataFinalHelpLocacao" placeholder="Data final da Locação"
+                            v-model="data_final_previsto_periodo">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Data final da Locação (Final)" id="novoDataFinalFinalLocacao" id-help="novoDataFinalFinalHelpLocacao"
-                        texto-ajuda="Informe a data final da locação.">
-                        <input type="text" class="form-control" id="novoDataFinalFinalLocacao" aria-describedby="novoDataFinalFinalHelpLocacao"
-                            placeholder="Data final da Locação" v-model="data_final_realizado_periodo">
+                    <input-container titulo="Data final da Locação (Final)" id="atualizarDataFinalFinalLocacao"
+                        id-help="atualizarDataFinalFinalHelpLocacao" texto-ajuda="Informe a data final da locação.">
+                        <input type="text" class="form-control" id="atualizarDataFinalFinalLocacao"
+                            aria-describedby="atualizarDataFinalFinalHelpLocacao" placeholder="Data final da Locação"
+                            v-model="data_final_realizado_periodo">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="Valor diária" id="novoValorDiariaLocacao" id-help="novoValorDiariaHelpLocacao"
-                        texto-ajuda="Valor diária">
-                        <input type="text" class="form-control" id="novoValorDiariaLocacao" aria-describedby="novoValorDiariaHelpLocacao"
-                            placeholder="Valor diária" v-model="valor_diaria">
+                    <input-container titulo="Valor diária" id="atualizarValorDiariaLocacao"
+                        id-help="atualizarValorDiariaHelpLocacao" texto-ajuda="Valor diária">
+                        <input type="text" class="form-control" id="atualizarValorDiariaLocacao"
+                            aria-describedby="atualizarValorDiariaHelpLocacao" placeholder="Valor diária"
+                            v-model="valor_diaria">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="KM Inicial" id="novoKMInicialLocacao" id-help="novoKMInicialHelpLocacao"
-                        texto-ajuda="KM Inicial">
-                        <input type="text" class="form-control" id="novoKMInicialLocacao" aria-describedby="novoKMInicialHelpLocacao"
-                            placeholder="KM Inicial" v-model="km_inicial">
+                    <input-container titulo="KM Inicial" id="atualizarKMInicialLocacao"
+                        id-help="atualizarKMInicialHelpLocacao" texto-ajuda="KM Inicial">
+                        <input type="text" class="form-control" id="atualizarKMInicialLocacao"
+                            aria-describedby="atualizarKMInicialHelpLocacao" placeholder="KM Inicial"
+                            v-model="km_inicial">
                     </input-container>
                 </div>
                 <div class="form-group">
-                    <input-container titulo="KM Final" id="novoKMFinalLocacao" id-help="novoKMFinalHelpLocacao"
-                        texto-ajuda="KM Inicial">
-                        <input type="text" class="form-control" id="novoKMFinalLocacao" aria-describedby="novoKMFinalHelpLocacao"
-                            placeholder="KM Inicial" v-model="km_inicial">
+                    <input-container titulo="KM Final" id="atualizarKMFinalLocacao"
+                        id-help="atualizarKMFinalHelpLocacao" texto-ajuda="KM Inicial">
+                        <input type="text" class="form-control" id="atualizarKMFinalLocacao"
+                            aria-describedby="atualizarKMFinalHelpLocacao" placeholder="KM Inicial"
+                            v-model="km_inicial">
                     </input-container>
                 </div>
             </template>
@@ -274,7 +300,7 @@
                 <button type="button" class="btn btn-primary" @click="atualizar()">Atualizar</button>
             </template>
         </modal-component>
-        <!-- fim do modal de atualização de clientes -->
+        <!-- fim do modal de atualização de locacao -->
 
 
     </div>
@@ -287,14 +313,21 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            urlBase: 'http://localhost:8000/api/v1/cliente',
+            urlBase: 'http://localhost:8000/api/v1/locacao',
             urlPaginacao: '',
             urlFiltro: '',
-            nomeCliente: '', 
+            cliente_id: '',
+            carro_id: '',
+            data_inicio_periodo: '',
+            data_final_previsto_periodo: '',
+            data_final_realizado_periodo: '',
+            valor_diaria: '',
+            km_inicial: '',
+            km_final: '',
             transacaoStatus: '',
             transacaoDetalhes: {},
-            clientes: { data: [] },
-            busca: { id: '', nome: '' },
+            locacoes: { data: [] },
+            busca: { id: '', cliente_id: '' },
         }
     },
     methods: {
@@ -302,14 +335,20 @@ export default {
 
             let formData = new FormData();
             formData.append('_method', 'patch')
-            formData.append('nome', this.$store.state.item.nome)
-            
+            formData.append('cliente_id', this.$store.state.item.cliente_id)
+            formData.append('carro_id', this.$store.state.item.carro_id)
+            formData.append('data_inicio_periodo', this.$store.state.item.data_inicio_periodo)
+            formData.append('data_final_previsto_periodo', this.$store.state.item.data_final_previsto_periodo)
+            formData.append('valor_diaria', this.$store.state.item.valor_diaria)
+            formData.append('km_inicial', this.$store.state.item.km_inicial)
+            formData.append('km_final', this.$store.state.item.km_final)
+
             let url = this.urlBase + '/' + this.$store.state.item.id
 
             axios.post(url, formData)
                 .then(response => {
                     this.$store.state.transacao.status = 'sucesso'
-                    this.$store.state.transacao.mensagem = 'Registro do cliente atualizado com sucesso'
+                    this.$store.state.transacao.mensagem = 'Registro de locação atualizado com sucesso'
                     //atualizarImagem.value = ''
                     this.carregarLista()
                 })
@@ -332,7 +371,7 @@ export default {
             let url = this.urlBase + '/' + this.$store.state.item.id
 
             console.log(this.$store.state.transacao)
-            axios.post(url, formData )
+            axios.post(url, formData)
                 .then(response => {
                     this.$store.state.transacao.status = 'sucesso'
                     this.$store.state.transacao.mensagem = response.data.msg
@@ -376,13 +415,13 @@ export default {
             }
         },
         carregarLista() {
-           
+
             let url = this.urlBase + '?' + this.urlPaginacao + this.urlFiltro
 
             console.log(url)
             axios.get(url)
                 .then(response => {
-                    this.clientes = response.data;
+                    this.locacoes = response.data;
                     // console.log(response.data); // Verifique os dados recebidos no console
                 })
                 .catch(errors => {
@@ -390,10 +429,17 @@ export default {
                 });
         },
         salvar() {
-            console.log(this.nomeCliente)
+            console.log(this.cliente_id, this.carro_id, this.data_inicio_periodo, this.data_final_previsto_periodo, this.data_final_realizado_periodo, this.valor_diaria, this.km_inicial, this.km_final)
 
             let formData = new FormData();
-            formData.append('nome', this.nomeCliente)
+            formData.append('cliente_id', this.cliente_id)
+            formData.append('carro_id', this.carro_id)
+            formData.append('data_inicio_periodo', this.data_inicio_periodo)
+            formData.append('data_final_previsto_periodo', this.data_final_previsto_periodo)
+            formData.append('data_final_realizado_periodo', this.data_final_realizado_periodo)
+            formData.append('valor_diaria', this.valor_diaria)
+            formData.append('km_inicial', this.km_inicial)
+            formData.append('km_final', this.km_final)
 
             axios.post(this.urlBase, formData)
                 .then(response => {
