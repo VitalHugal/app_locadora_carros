@@ -9,7 +9,7 @@
                             <div class="col-md-6 mb-3">
                                 <!-- Componente que instaciamos -->
                                 <input-container titulo="ID" id="inputIdLocacao" id-help="idHelpLocacao"
-                                    texto-ajuda="Opcional. Informe o ID da Locacão.">
+                                    texto-ajuda="Opcional. Informe o ID da Locação.">
                                     <input type="number" class="form-control" id="inputIdLocacao"
                                         aria-describedby="idHelpLocacao" placeholder="ID" v-model="busca.id">
                                 </input-container>

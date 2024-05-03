@@ -70,7 +70,7 @@ class LocacaoController extends Controller
     {
         $locacao = $this->locacao->find($id);
 
-        if ($locacao === null) {
+        if ($locacao === null || $id!=$id) {
             return response()->json(['erro' => 'Recurso indisponivel - (ver id)'], 404); //json
         }
         return response()->json($locacao, 200);
