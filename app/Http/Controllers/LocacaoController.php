@@ -29,7 +29,7 @@ class LocacaoController extends Controller
             $locacaoRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($locacaoRepository->getResultado(), 200);
+        return response()->json($locacaoRepository->getResultadoPaginado(3), 200);
     }
 
     /**
