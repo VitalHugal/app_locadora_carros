@@ -63,7 +63,7 @@ Content-Type
 
 - O content-type é responsavel por entregar ao cliente a resposta
 em text/html que é o mais comum geralmente ou em application/json;
-- Dicionando isso;
+- adicionando isso;
 
 Route::get('/', function () {
     return ['chegamos até aqui'=>'sim'];
