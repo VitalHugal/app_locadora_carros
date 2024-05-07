@@ -63,11 +63,16 @@ class ModeloController extends Controller
      */
     public function store(Request $request)
     {
+        //valida se os dados recebidos estão de acordo com o rules na model (regras)
         $request->validate($this->modelo->rules());
-
+        
+        //recuperando o arquivo de imagem da requisição
         $imagem = $request->file('imagem');
+        
+        //usando metodo store para guardar a imagem/modelos do diretorio publico 
         $imagem_urn = $imagem->store('imagens/modelos', 'public');
-
+        
+        //criando uma novo registro no banco de dados
         $modelo = $this->modelo->create([
             'marca_id' => $request->marca_id,
             'nome' => $request->nome,
@@ -180,7 +185,7 @@ class ModeloController extends Controller
             return response()->json(['erro' => 'Impossível realizar a exclusão. O recurso solicitado não existe'], 404);
         }
 
-        //remove o arquivo antigo
+        //remove o arquivo 
         Storage::disk('public')->delete($modelo->imagem);
 
         $modelo->delete();

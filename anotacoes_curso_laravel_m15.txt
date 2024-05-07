@@ -368,7 +368,7 @@ _________________________________________________________________
 Validações parte 4 - Regras de validação no Update - Lidando 
 com o Unique
 
-- A validação unique lea tem três parametros;
+- A validação unique ela tem três parametros;
 
 1- tabela;
 2- nome da coluna que será pesquisda na tabela;
@@ -419,7 +419,7 @@ Upload de arquivos - Implementando o upload de imagens parte 1
 
 - Como realizar upload de arquivos no caso vamos utilizar upload
 de imagem mas pode ser usado para vídeo, som e etc ...
-- Agora dentro do post vamos trabalhar com outro parametro no 
+- Agora dentro do postman vamos trabalhar com outro parametro no 
 body vamos trabalhar com form_data iremos por enquando dizer que
 nosso cliente sabe trabalhar com arquivos json e utilizaremos
 o metodo post (store).
@@ -483,9 +483,9 @@ por gerar um link desse tipo que precisamos;
 - Lembre-se esse diretorio trabalha em conjunto com storage/app
 /public/imagens caso vc exclua algo em um no outro também 
 ocorrerá e isso é para tudo;
-- Com isso craido eu consigo acessar essas imagens atraves de 
+- Com isso criado eu consigo acessar essas imagens atraves de 
 uma requisição get por exemplo;
-- Coloque ele link no seu POSTMAN com o metodo get, lembre-se 
+- Coloque esse link no seu POSTMAN com o metodo get, lembre-se 
 colocar o direcionamento de uma imagem válida do seu sistema;
 
 localhost:8000/storage/imagens/6w1e44KVT0CwuPBB6cBGsZbQSW7y
@@ -494,14 +494,14 @@ _________________________________________________________________
 Upload de arquivos - Atualizando imagens
 
 - Para ser possível atualizar o arquivo com imagem temos que 
-utilizar um _metodo com pararmetro put ou patch no nosso POSTMAN
+utilizar um metodo (_method) com pararmetro put ou patch no nosso POSTMAN
 dessa forma; 
 
 _method na key
 put no value
 
 - Assim como nome e bmw;
-- Isso é um alimitação do framework laravel por isso temos que 
+- Isso é uma limitação do framework laravel por isso temos que 
 fazer isso;
 _________________________________________________________________
 Upload de arquivos - Removendo imagens
