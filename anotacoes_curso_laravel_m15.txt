@@ -717,7 +717,7 @@ __________________________________________________________________
 API WebService Rest para o Resource Carro
 
 - Nessa etapa iremos basicamente realizar ctrl+c ctrl+v para o 
-carrocontroller de modo em que seja possível termos como alvança 
+carrocontroller de modo em que seja possível avançar 
 dentro da nossa API;
 - Criamos CarroRepository, Codificamos a model Carro e também
 CarroController;
