@@ -10,7 +10,6 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-
         $credenciais = $request->all(['email', 'password']); //autenticação do usuario (email e senha)
 
         $token = auth('api')->attempt($credenciais); //retornar um tokem jwt
