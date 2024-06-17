@@ -123,6 +123,7 @@ class MarcaController extends Controller
 
         //se a imagem foi encaminhada na requisição
         if($request->file('imagem')) {
+            
             //remove o arquivo antigo
             Storage::disk('public')->delete($marca->imagem);
 
