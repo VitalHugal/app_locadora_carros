@@ -14,15 +14,15 @@ class Carro extends Model
     public function rules()
     {
         return [
-            'modelo_id' =>'exists:modelos,id',
+            'modelo_id' => 'exists:modelos,id',
             'placa' => 'required',
             'disponivel' => 'required',
-            'km'=> 'required'
+            'km' => 'required'
         ];
     }
     public function modelo()
-{
-    // Deve ser 'return $this->belongsTo('App\Models\Modelo', 'modelo_id');'
-    return $this->belongsTo('App\Models\Modelo', 'modelo_id');
-}
+    {
+        // Deve ser 'return $this->belongsTo('App\Models\Modelo', 'modelo_id');'
+        return $this->belongsTo('App\Models\Modelo', 'modelo_id');
+    }
 }
