@@ -18,13 +18,6 @@ public function up()
         $table->string('placa', 10)->unique();
         $table->boolean('disponivel');
         $table->integer('km');
-
-
-
-
-
-
-        
         $table->timestamps();
 
         //foreign key (constraints)

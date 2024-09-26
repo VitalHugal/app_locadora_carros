@@ -26,6 +26,8 @@ melhorar a semântica do protocolo HTTP;
 _________________________________________________________________
 Iniciando o projeto Locadora de Carros
 
+composer global require laravel/installer
+
 php artisan make:model --migration --controller --resource Marca
 
 - Utilizamos esse comando para criar as migrations os controllers;
